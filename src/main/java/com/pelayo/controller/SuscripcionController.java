@@ -1,7 +1,6 @@
 package com.pelayo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,31 +10,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.pelayo.model.Contacto;
-import com.pelayo.service.ContactoService;
+import com.pelayo.model.Suscripcion;
+import com.pelayo.service.SuscripcionService;
 
 @Controller
-public class ContactoController {
+public class SuscripcionController {
 	@Autowired
-    private ContactoService contactoService;
+    private SuscripcionService suscripcionService;
 
-    @PostMapping("/enviar")
-    public void insertar(@RequestBody Contacto contacto) {
-        contactoService.insertar(contacto);
+    @PostMapping("/insertar")
+    public void insertar(@RequestBody Suscripcion suscripcion) {
+        suscripcionService.insertar(suscripcion);
     }
 
     @GetMapping("/listar")
-    public List<Contacto> listar() {
-        return contactoService.verTodos();
+    public List<Suscripcion> listar() {
+        return suscripcionService.verTodas();
     }
 
     @GetMapping("/buscarPorPersona/{personaId}")
-    public Optional<Contacto> buscarPorPersona(@PathVariable Long personaId) {
-        return contactoService.buscarPorId(personaId);
+    public List<Suscripcion> buscarPorPersona(@PathVariable Long personaId) {
+        return suscripcionService.buscarPorPersonaId(personaId);
     }
 
     @DeleteMapping("/borrar/{id}")
     public boolean borrar(@PathVariable Long id) {
-        return contactoService.borrarContacto(id);
+        return suscripcionService.borrarSuscripcion(id);
     }
 }
