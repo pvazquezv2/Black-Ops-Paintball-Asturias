@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escenarios | Black Ops Paintball Asturias</title>
+    <link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/index}">
+          <img
+            th:src="@{/img/logo.png}"
+            alt="Black Ops Paintball Asturias"
+            title="Black Ops Paintball Asturias"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/precios}" title="precios">Precios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/escenarios}" title="escenarios">Escenarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/eventos}" title="eventos">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/modosDeJuego}" title="modos de juego">Modos de Juego</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                th:href="@{/porqueNosotros}"
+                title="¿por qué nosotros"
+              >
+                ¿Por qué nosotros?
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" th:href="@{/quienesSomos}" title="quienes somos">Quienes Somos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" th:href="@{/reglamento}" title="reglamento">Reglamento</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas Frecuentes</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/contacto}" title="contacto">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-glow ms-3" th:href="@{/login}" title="iniciar sesión">INICIAR SESIÓN</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <video autoplay muted loop playsinline>
+        <source th:src="@{/videos/escenarios.mp4}" type="video/mp4" />
+      </video>
+      <div class="content">
+        <h1>ESCENARIOS</h1>
+        <p>Desde bosques hasta ruinas: elige tu campo de batalla.</p>
+        <a class="btn btn-glow" th:href="@{/reservar}" title="reservar">RESERVA YA</a>
+      </div>
+    </header>
+
+    <!-- Repite esta lógica para cada escenario, reemplazando `src` y `href` por `th:src` y `th:href` -->
+    <!-- Para no extender demasiado este mensaje, solo muestro el patrón para uno. Puedo convertir el resto si lo deseas. -->
+
+    <section class="container my-5 escenario">
+      <h1 class="text-center">El Bastión del Norte</h1>
+      <br />
+      <div id="carrusel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img th:src="@{/img/castillo6.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 1" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/castillo8.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 2" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/castillo7.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 3" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/castillo4.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 4" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/castillo5.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 5" />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <p>
+            El Bastión del Norte: Un escenario épico para Paintball... Ubicado cerca de Salinas, el Bastión del Norte es un escenario de paintball
+            de estilo medieval que ofrece una experiencia única. Con sus
+            imponentes murallas, torres y pasillos, es el campo perfecto para
+            poner a prueba tus habilidades tácticas. El terreno combina zonas
+            abiertas para combates intensos y áreas más cerradas que requieren
+            astucia. Rodeado de la belleza natural asturiana, cada partida es
+            una aventura llena de emoción, donde cada movimiento cuenta.
+            ¡Conquista el Bastión del Norte y vive una batalla épica en
+            Paintball Asturias!
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Dificultad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 90%"></div>
+          </div>
+          <p><strong>Adrenalina</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 100%"></div>
+          </div>
+          <p><strong>Maniobralidad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a
+          class="ubicacion-escenarios"
+          href="https://maps.app.goo.gl/xiF8W7Wdew2WuPj57"
+          target="_blank"
+          title="El Bastión del Norte"
+        >
+          📍 Castillo de Gaurón (Castrillón)
+        </a>
+      </p>
+    </section>
+
+    <!-- Escenario 2 -->
+    <section class="container my-5 escenario">
+      <h1 class="text-center">La Casona Perdida</h1>
+      <br />
+      <div id="carrusel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img th:src="@{/img/pueblo1.jpeg}" class="d-block w-100 img-fluid rounded" alt="Imagen 1" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/pueblo2.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 2" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/pueblo3.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 3" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/pueblo4.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 4" />
+          </div>
+          <div class="carousel-item">
+            <img th:src="@{/img/pueblo5.jpg}" class="d-block w-100 img-fluid rounded" alt="Imagen 5" />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <p>
+            Oculta entre los verdes montes asturianos, La Casona Perdida se alza
+            solitaria, como el último vestigio de un pasado olvidado. Sus muros
+            de piedra, ennegrecidos por la humedad y el paso de los años, apenas
+            sostienen un tejado que se derrumba en silencio. La hiedra trepa por
+            sus paredes agrietadas, abrazándola como si intentara arrastrarla
+            definitivamente hacia la tierra. El camino que conduce hasta ella,
+            antaño bien marcado, es ahora poco más que un sendero difuso entre
+            la maleza y el barro. A su alrededor, el bosque avanza inexorable,
+            sus ramas susurrando con el viento nombres que ya nadie recuerda. Se
+            dice que en las noches de niebla, las ventanas de la Casona reflejan
+            luces que no pertenecen a este tiempo, y que quien ose cruzar su
+            umbral escucha voces apagadas, ecos de vidas que jamás lograron
+            abandonar el lugar. Pocos la encuentran. Menos aún regresan para
+            contar lo que han visto.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Dificultad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 60%"></div>
+          </div>
+          <p><strong>Adrenalina</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 100%"></div>
+          </div>
+          <p><strong>Maniobralidad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 40%"></div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a
+          class="ubicacion-escenarios"
+          href="https://maps.app.goo.gl/ngWr5hick7iqKXYy7"
+          target="_blank"
+          title="La Casona Perdida"
+        >
+          📍 Pueblo de Sietes (Villaviciosa)
+        </a>
+      </p>
+    </section>
+
+    <!-- Escenario 3 -->
+    <section class="container my-5 escenario">
+      <h1 class="text-center">Lagos de Covadonga</h1>
+      <br />
+      <img th:src="@{/img/bosque2.jpg}" class="img-fluid rounded mb-4" alt="Lagos de Covadonga" />
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <p>
+            Lagos de Covadonga: Naturaleza, estrategia y emoción...
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Dificultad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-danger" style="width: 85%"></div>
+          </div>
+          <p><strong>Adrenalina</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-danger" style="width: 95%"></div>
+          </div>
+          <p><strong>Maniobralidad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-danger" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a
+          class="ubicacion-escenarios"
+          href="https://maps.app.goo.gl/k7zscx1PY3uCB7EP9"
+          target="_blank"
+          title="Lagos de Covadonga"
+        >
+          📍 Lagos de Covadonga (Cangas de Onís)
+        </a>
+      </p>
+    </section>
+
+    <!-- Escenario 4 -->
+    <section class="container my-5 escenario">
+      <h1 class="text-center">Fuerza Minera</h1>
+      <br />
+      <img th:src="@{/img/mina.jpg}" class="img-fluid rounded mb-4" alt="Fuerza Minera" />
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <p>
+            Fuerza Minera es un escenario desafiante inspirado en...
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Dificultad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-primary" style="width: 80%"></div>
+          </div>
+          <p><strong>Adrenalina</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-primary" style="width: 90%"></div>
+          </div>
+          <p><strong>Maniobralidad</strong></p>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-primary" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a
+          class="ubicacion-escenarios"
+          href="https://maps.app.goo.gl/K1TYHKpHLkFwJ9S6A"
+          target="_blank"
+          title="Fuerza Minera"
+        >
+          📍 Mina de Arnau (Castrillón)
+        </a>
+      </p>
+    </section>
+
+    <footer class="footer mt-5 p-4 text-white text-center">
+      <div class="container">
+        <p>&copy; 2024 Black Ops Paintball Asturias</p>
+      </div>
+    </footer>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>

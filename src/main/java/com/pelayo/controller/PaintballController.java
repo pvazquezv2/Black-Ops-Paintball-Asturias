@@ -19,6 +19,62 @@ public class PaintballController {
 	public String mostrarIndex() {
 		return "index";
 	}
+	
+	@GetMapping("/precios")
+	public String precios() {
+		return "precios";
+	}
+	
+	@GetMapping("/escenarios")
+		public String escenarios() {
+			return "escenarios";
+		}
+	
+	@GetMapping("/eventos")
+	public String eventos() {
+		return "eventos";
+	}
+	
+	@GetMapping("/modosDeJuego")
+	public String modosDeJuego() {
+		return "modosDeJuego";
+	}
+	
+	@GetMapping("/equipamiento")
+	public String equipamiento() {
+		return "equipamiento";
+	}
+	
+	@GetMapping("/quienesSomos")
+	public String quienesSomos() {
+		return ("quienesSomos");
+	}
+	
+	@GetMapping("/reglamento")
+	public String reglamento() {
+		return ("reglamento");
+	}
+	
+	@GetMapping("/preguntasFrecuentes")
+	public String preguntasFrecuentes() {
+		return "preguntasFrecuentes";
+	}
+	
+	@GetMapping("/contacto")
+	public String contacto() {
+		return "contacto";
+	}
+	
+	@GetMapping("/reservar")
+	public String reservar() {
+		return "reservar";
+	}
+	
+//	@GetMapping("/login")
+//	public String login() {
+//		return "login";
+//	}
+	
 
     // Mostrar formulario de login
     @GetMapping("/login")
