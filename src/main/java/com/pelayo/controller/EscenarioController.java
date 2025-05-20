@@ -23,12 +23,12 @@ public class EscenarioController {
 	private EscenarioService escenarioService;
 	
 	// Mostrar todos los escenarios
-	@GetMapping
-	public String listarEscenarios(Model model) {
-		List<Escenario> escenarios = escenarioService.verTodos();
-		model.addAttribute("escenarios", escenarios);
-		return "escenarios/lista";
-	}
+//	@GetMapping
+//	public String listarEscenarios(Model model) {
+//		List<Escenario> escenarios = escenarioService.verTodos();
+//		model.addAttribute("escenarios", escenarios);
+//		return "escenarios/lista";
+//	}
 	
 	//formulario para añadir nuevo escenario
 	@GetMapping("/nuevo")

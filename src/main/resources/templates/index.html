@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio | Black Ops Paintball Asturias</title>
+    <link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+          <img
+            th:src="@{/img/logo.png}"
+            alt="Black Ops Paintball Asturias"
+            title="Black Ops Paintball Asturias"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/precios}">Precios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/escenarios}">Escenarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/modosDeJuego}">Modos de Juego</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/equipamiento}">Equipamiento</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                href="#"
+              >
+                ¿Por qué nosotros?
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" th:href="@{/quienesSomos}">Quienes Somos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" th:href="@{/reglamento}">Reglamento</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" th:href="@{/preguntasFrecuentes}">Preguntas Frecuentes</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <video autoplay muted loop playsinline>
+        <source th:src="@{/videos/paintball2.mp4}" type="video/mp4" />
+      </video>
+      <div class="content">
+        <h1>BLACK OPS PAINTBALL</h1>
+        <p>No es un juego. Es una misión</p>
+        <a class="btn btn-glow" th:href="@{/reservar}">RESERVA YA</a>
+      </div>
+    </header>
+
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Momentos Épicos en Black Ops</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <img th:src="@{/img/index1.jpg}" class="img-fluid rounded shadow-sm" alt="Jugador en acción" />
+        </div>
+        <div class="col-md-4">
+          <img th:src="@{/img/index2.jpg}" class="img-fluid rounded shadow-sm" alt="Escenario táctico" />
+        </div>
+        <div class="col-md-4">
+          <img th:src="@{/img/index3.jpg}" class="img-fluid rounded shadow-sm" alt="Partida en equipo" />
+        </div>
+        <div class="col-md-4">
+          <img th:src="@{/img/index4.jpg}" class="img-fluid rounded shadow-sm" alt="Disparo preciso" />
+        </div>
+        <div class="col-md-4">
+          <img th:src="@{/img/index5.jpg}" class="img-fluid rounded shadow-sm" alt="Campo de batalla" />
+        </div>
+        <div class="col-md-4">
+          <img th:src="@{/img/index6.jpg}" class="img-fluid rounded shadow-sm" alt="Equipamiento en uso" />
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2>Vive la Estrategia</h2>
+          <p>
+            Planifica, coordina y lidera a tu equipo en misiones realistas. No
+            es solo disparar, es pensar, moverse en equipo y superar desafíos en
+            entornos diseñados para la adrenalina.
+          </p>
+          <a th:href="@{/modosDeJuego}" class="btn btn-glow mt-3">Ver modos de juego</a>
+        </div>
+        <div class="col-md-6">
+          <img th:src="@{/img/estrategia.jpg}" class="img-fluid rounded shadow-sm" alt="Estrategia Paintball" />
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <div class="row align-items-center flex-md-row-reverse">
+        <div class="col-md-6">
+          <h2>Equipamiento de Alta Calidad</h2>
+          <p>
+            Descubre nuestra equipación profesional: marcadoras, protecciones,
+            trajes y accesorios que garantizan la mejor experiencia en cada
+            partida, con seguridad y realismo.
+          </p>
+          <a th:href="@{/equipamiento}" class="btn btn-glow mt-3">Ver equipamiento</a>
+        </div>
+        <div class="col-md-6">
+          <img th:src="@{/img/equipamiento.jpg}" class="img-fluid rounded shadow-sm" alt="Equipamiento Paintball" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark">
+      <div class="container text-center">
+        <h2 data-aos="fade-down">¿Qué te espera?</h2>
+        <div class="row mt-5">
+          <div class="col-md-4" data-aos="zoom-in">
+            <div class="glass-card">
+              <h4>Escenarios Naturales</h4>
+              <p>
+                En plena naturaleza asturiana, con zonas de cobertura real y
+                terreno táctico.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="glass-card">
+              <h4>Equipamiento Pro</h4>
+              <p>
+                Marcadoras, protecciones y munición premium para que juegues
+                como un profesional.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+            <div class="glass-card">
+              <h4>Eventos Privados</h4>
+              <p>
+                Cumples, despedidas, team building o guerras entre colegas.
+                ¡Todo vale!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="eventos-banner w-100 position-relative">
+      <div class="overlay-dark"></div>
+      <div
+        class="d-flex justify-content-center align-items-center h-100 position-relative"
+      >
+        <a class="btn btn-glow" th:href="@{/eventos}">EVENTOS</a>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Opiniones de nuestros jugadores</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p>
+                "¡Increíble experiencia! Los escenarios son brutales y el
+                personal muy atento."
+              </p>
+              <h5 class="card-title">- Carlos G.</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p>
+                "Me lo pasé genial con mis amigos. Muy recomendable para
+                despedidas de soltero."
+              </p>
+              <h5 class="card-title">- Laura P.</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p>
+                "Una pasada de instalaciones, volveré seguro. ¡Repetimos
+                pronto!"
+              </p>
+              <h5 class="card-title">- Javier M.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+    </footer>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>

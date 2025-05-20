@@ -85,7 +85,7 @@ public class PersonaService {
 	}
 	
 	public Persona buscarPersonaPorUsuario(String usuario) {
-	    Persona persona = personaRepo.findPersonaByUsuario(usuario);
+	    Persona persona = personaRepo.findByNombreUsuario(usuario);
 	    return persona;
 	}
     

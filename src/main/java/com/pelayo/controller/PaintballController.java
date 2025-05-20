@@ -14,6 +14,11 @@ import com.pelayo.service.PersonaService;
 public class PaintballController {
 	@Autowired
     private PersonaService personaService;
+	
+	@GetMapping("/")
+	public String mostrarIndex() {
+		return "index";
+	}
 
     // Mostrar formulario de login
     @GetMapping("/login")
