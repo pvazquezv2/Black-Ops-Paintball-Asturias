@@ -225,10 +225,10 @@ header.hero {
     margin-right: 10px;
   }
 
-  .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+
+.seccion{
+  flex-direction: column;
 }
 
 .form {
