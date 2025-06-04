@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Añadir evento | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/admin}">
+				<img th:src="@{/img/logo.png}" alt="Logo Black Ops"
+				title="Panel Admin" /> <span
+				class="ms-2">ADMINISTRACIÓN</span>
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link btn btn-outline-light"
+						th:href="@{/logout}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="container admin-menu">
+		<h1 class="text-center mb-5">Añadir nuevo evento</h1>
+		<form th:action="@{/admin/nuevo_evento}" th:object="${evento}"
+			method="post" enctype="multipart/form-data">
+			<div class="mb-3">
+				<label for="titulo" class="form-label">Título</label> <input
+					type="text" class="form-control" th:field="*{titulo}" required />
+			</div>
+			<div class="mb-3">
+				<label for="categoria" class="form-label">Categoría</label> <select
+					class="form-select" th:field="*{categoria}" required>
+					<option value="">Selecciona una categoría</option>
+					<option value="Torneo Oficial">Torneo Oficial</option>
+					<option value="Evento Temático">Evento Temático</option>
+					<option value="Evento Corporativo">Evento Corporativo</option>
+					<option value="Familiar / Infantil">Familiar / Infantil</option>
+					<option value="Liga">Liga</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="fecha" class="form-label">Fecha</label> <input
+					type="date" class="form-control" th:field="*{fecha}" required />
+			</div>
+			<div class="mb-3">
+				<label for="horaInicio" class="form-label">Hora de Inicio</label> <input
+					type="time" class="form-control" th:field="*{horaInicio}" required />
+			</div>
+			<div class="mb-3">
+				<label for="horaFin" class="form-label">Hora de Fin</label> <input
+					type="time" class="form-control" th:field="*{horaFin}" required />
+			</div>
+			<div class="mb-3">
+				<label for="descripcion" class="form-label">Descripción</label>
+				<textarea class="form-control" th:field="*{descripcion}" rows="3"></textarea>
+			</div>
+			<div class="mb-3">
+				<label for="escenario" class="form-label">Escenario</label> <select
+					class="form-select" th:field="*{escenario}" required>
+					<option th:each="esc : ${escenarios}" th:value="${esc.id}"
+						th:text="${esc.nombre}"></option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="imagen" class="form-label">Imagen</label> <input
+					type="file" class="form-control" name="imagen" accept="image/*" />
+			</div>
+			<button type="submit" class="btn btn-glow">Guardar Evento</button>
+		</form>
+		<div class="col-md-12" style="margin-top: 10px">
+			<a th:href="@{/admin/gestion_eventos}"
+				class="btn btn-dark w-100 p-4 shadow card-transparente"> Volver a la
+				gestión de eventos </a>
+		</div>
+	</main>
+
+	<footer class="mt-5 text-center">
+		<p>&copy; 2025 Black Ops Paintball Asturias | Panel de
+			Administración</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

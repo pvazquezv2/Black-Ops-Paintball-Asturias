@@ -16,27 +16,27 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "suscripciones")
 public class Suscripcion implements Serializable {
-	
+
 	private static final Long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private LocalDate fechaRealizada;
-	
-	@ManyToOne
-    @JoinColumn(name = "id_persona")
-    private Persona persona;
 
-    @ManyToOne
-    @JoinColumn(name = "id_evento")
-    private Evento evento;
-    
-    public Suscripcion() {
-    	
-    }
+	@ManyToOne
+	@JoinColumn(name = "id_persona")
+	private Persona persona;
+
+	@ManyToOne
+	@JoinColumn(name = "id_evento")
+	private Evento evento;
+
+	public Suscripcion() {
+
+	}
 
 	public Suscripcion(LocalDate fechaRealizada) {
 		super();
@@ -98,9 +98,5 @@ public class Suscripcion implements Serializable {
 		return "Suscripcion [id=" + id + ", fechaRealizada=" + fechaRealizada + ", persona=" + persona + ", evento="
 				+ evento + "]";
 	}
-    
-    
-	
-	
 
 }

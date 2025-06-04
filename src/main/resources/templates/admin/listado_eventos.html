@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>Listado de Eventos | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/admin}">
+				<img th:src="@{/img/logo.png}" alt="Logo Black Ops"
+				title="Panel Admin" /> <span
+				class="ms-2">ADMINISTRACIÓN</span>
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link btn btn-outline-light"
+						th:href="@{/logout}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container admin-menu">
+		<h1 class="text-center mb-5">Listado de Eventos</h1>
+		<section class="container my-5">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th>Título</th>
+							<th>Fecha</th>
+							<th>Hora Inicio</th>
+							<th>Hora Fin</th>
+							<th>Escenario</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="evento : ${eventos}"
+							th:class="${evento.getColorClase()}">
+							<td th:text="${evento.titulo}">Torneo Verano</td>
+							<td th:text="${#temporals.format(evento.fecha, 'dd-MM-yyyy')}">2025-06-01</td>
+							<td th:text="${evento.horaInicio}">10:00</td>
+							<td th:text="${evento.horaFin}">18:00</td>
+							<td th:text="${evento.escenario.nombre}">Escenario 2</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<div class="col-md-12">
+			<a th:href="@{/admin/gestion_eventos}"
+				class="btn btn-dark w-100 p-4 shadow card-transparente"> Volver a la
+				gestión de eventos </a>
+		</div>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Panel de Administración</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

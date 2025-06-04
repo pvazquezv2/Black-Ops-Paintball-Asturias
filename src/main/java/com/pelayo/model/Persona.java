@@ -16,51 +16,46 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="personas")
+@Table(name = "personas")
 public class Persona implements Serializable {
 
 	private static final Long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nombre;
-	
+
 	@Column(nullable = false)
 	private String apellido1;
-	
+
 	@Column(nullable = false)
 	private String apellido2;
-	
+
 	@Column(unique = true, nullable = false)
 	private String email;
-	
-	@Column(name = "nombre_usuario" , unique = true, nullable = false)
+
+	@Column(name = "nombre_usuario", unique = true, nullable = false)
 	private String nombreUsuario;
-	
+
 	@Column(nullable = false)
 	private String password;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private Rol rol;
-	
+
 	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
 	private List<Reserva> reservas;
-	
+
 	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
 	private List<Suscripcion> suscripciones;
-	
-	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
-    private List<Contacto> contactos;
-	
-	public Persona() {
-		
-	}
 
-	
+	public Persona() {
+
+	}
 
 	public Persona(String nombre, String apellido1, String apellido2, String email, String nombreUsuario,
 			String password, Rol rol) {
@@ -73,8 +68,6 @@ public class Persona implements Serializable {
 		this.password = password;
 		this.rol = rol;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -156,17 +149,10 @@ public class Persona implements Serializable {
 		this.suscripciones = suscripciones;
 	}
 
-	public List<Contacto> getContactos() {
-		return contactos;
-	}
-
-	public void setContactos(List<Contacto> contactos) {
-		this.contactos = contactos;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellido1, apellido2, email, id, nombre, nombreUsuario, password, rol);
+		return Objects.hash(apellido1, apellido2, email, id, nombre, nombreUsuario, password, reservas, rol,
+				suscripciones);
 	}
 
 	@Override
@@ -181,18 +167,20 @@ public class Persona implements Serializable {
 		return Objects.equals(apellido1, other.apellido1) && Objects.equals(apellido2, other.apellido2)
 				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(nombreUsuario, other.nombreUsuario)
-				&& Objects.equals(password, other.password) && rol == other.rol;
+				&& Objects.equals(password, other.password) && Objects.equals(reservas, other.reservas)
+				&& rol == other.rol && Objects.equals(suscripciones, other.suscripciones);
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
 				+ ", email=" + email + ", nombreUsuario=" + nombreUsuario + ", password=" + password + ", rol=" + rol
-				+ ", reservas=" + reservas + "]";
+				+ ", reservas=" + reservas + ", suscripciones=" + suscripciones + "]";
 	}
-	
-	
-	
+
+	public boolean isPresent() {
+
+		return false;
+	}
+
 }

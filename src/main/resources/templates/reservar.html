@@ -1,279 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas | Black Ops Paintball Asturias </title>
-    <link rel="icon" type="image/png" href="img/logo.png" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <style>
-    .reserva-form {
-      background-color: #f8f9fa;
-      border-radius: 8px;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    #calendar {
-      max-width: 100%;
-      margin: 20px auto;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reservar | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="img/logo.png" alt="Black Ops Paintball Asturias" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
-            <li class="nav-item">
-              <a class="nav-link" href="precios.html">Precios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="escenarios.html">Escenarios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="eventos.html">Eventos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="modosDeJuego.html">Modos de Juego</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="equipamiento.html">Equipamiento</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="porqueNosotros.html"
-                >¿Por qué nosotros?</a
-              >
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="quienesSomos.html">Quienes Somos</a></li>
-                <li><a class="dropdown-item" href="reglamento.html">Reglamento</a></li>
-                <li><a class="dropdown-item" href="preguntasFrecuentes.html">Preguntas Frecuentes</a></li>
 
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-glow ms-3" href="login.html">INICIAR SESIÓN</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <header class="hero">
-      <video autoplay muted loop playsinline>
-        <source src="videos/paintball2.mp4" type="video/mp4" />
-      </video>
-      <div class="content">
-        <h1>RESERVA YA</h1>
-        <p>Y prepárate para la guerra</p>
-      </div>
-    </header>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark fixed-top nav-transparente">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+				<img th:src="@{/img/logo.png}" alt="Black Ops Paintball Asturias"
+				title="Black Ops Paintball Asturias" />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+					<li class="nav-item"><a class="nav-link" th:href="@{/precios}"
+						title="precios">Precios</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/escenarios}" title="escenarios">Escenarios</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/eventos}"
+						title="eventos">Eventos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/modosDeJuego}" title="modos de juego">Modos de
+							Juego</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false" href="#"
+						title="¿por qué nosotros?"> ¿Por qué nosotros? </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/quienesSomos}"
+								title="quienes somos">Quienes Somos</a></li>
+							<li><a class="dropdown-item" th:href="@{/reglamento}"
+								title="reglamento">Reglamento</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas
+									Frecuentes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contacto}" title="contacto">Contacto</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a></li>
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<span sec:authentication="name">Usuario</span>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="userDropdown">
+							<li><a class="dropdown-item" th:href="@{/misReservas}"
+								title="Mis Reservas">Mis Reservas</a></li>
+							<li><a class="dropdown-item" th:href="@{/misEventos}"
+								title="Mis Eventos">Mis Eventos</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post">
+									<button type="submit" class="dropdown-item">Cerrar
+										sesión</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-  <section class="container my-5">
-<h2 class="text-center mb-4">Formulario de Reserva</h2>
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/paintball2.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<h1>RESERVA YA</h1>
+			<p>Y prepárate para la guerra</p>
+			<div th:if="${mensaje}" class="alert alert-success"
+				th:text="${mensaje}"></div>
+			<div th:if="${error}" class="alert alert-danger text-center"
+				th:text="${error}"></div>
+		</div>
+	</header>
 
-          <form action="/reservas/enviar" class="row g-3 mx-auto" style="max-width: 700px;" method="POST">
-            <!-- Usuario (rellenado por backend) -->
-            <div class="mb-3">
-              <label class="form-label">Nombre del usuario</label>
-              <input type="text" class="form-control" th:value="${usuario.nombreCompleto}" readonly />
-            </div>
+	<section class="container my-5">
+		<h2 class="text-center mb-4">Formulario de Reserva</h2>
+		<form th:action="@{/reservas/enviar}" method="post"
+			class="row g-3 mx-auto" id="formulario-reserva">
+			<div class="mb-3">
+				<label class="form-label">Nombre de usuario</label> <input
+					type="text" class="form-control"
+					th:value="${usuario.nombreUsuario}" readonly />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Fecha</label> <input type="date"
+					class="form-control" name="fecha" required />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Hora</label> <select class="form-select"
+					name="hora" required>
+					<option selected disabled>Selecciona una hora</option>
+					<option>09:00</option>
+					<option>09:30</option>
+					<option>10:00</option>
+					<option>10:30</option>
+					<option>11:00</option>
+					<option>11:30</option>
+					<option>12:00</option>
+					<option>12:30</option>
+					<option>13:00</option>
+					<option>13:30</option>
+					<option>14:00</option>
+					<option>14:30</option>
+					<option>15:00</option>
+					<option>15:30</option>
+					<option>16:00</option>
+					<option>16:30</option>
+					<option>17:00</option>
+					<option>17:30</option>
+					<option>18:00</option>
+					<option>18:30</option>
+					<option>19:00</option>
+					<option>19:30</option>
+					<option>20:00</option>
+					<option>20:30</option>
+					<option>21:00</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Número de personas</label> <input
+					type="number" class="form-control" name="personas" min="1" required />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Escenario</label> <select
+					class="form-select" name="escenario" id="escenarioSelect" required>
+					<option selected disabled>Selecciona un escenario</option>
+					<option value="El Bastión del Norte">El Bastión del Norte</option>
+					<option value="Lagos de Covadonga">Lagos de Covadonga</option>
+					<option value="La Casona Perdida">La Casona Perdida</option>
+					<option value="Selva Astur">Selva Astur</option>
+					<option value="Playa de Frexulfe">Playa de Frexulfe</option>
+					<option value="Fuerza Minera">Fuerza Minera</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Modo de juego</label> <select
+					class="form-select" name="modo" id="modoSelect" required>
+					<option selected disabled>Selecciona un modo de juego</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Selecciona un pack</label> <select
+					class="form-select" name="pack" required>
+					<option selected disabled value="">Elige un pack</option>
+					<option value="Pack Básico">Pack Básico</option>
+					<option value="Pack Avanzado">Pack Avanzado</option>
+					<option value="Pack Premium">Pack Premium</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Información adicional</label>
+				<textarea class="form-control" name="infoAdicional" rows="3"></textarea>
+			</div>
+			<div class="col-12 text-center">
+				<button type="submit" class="btn btn-glow" title="confirmar reserva">Confirmar
+					reserva</button>
+			</div>
+		</form>
+	</section>
 
-            <div class="mb-3">
-              <label class="form-label">Fecha</label>
-              <input type="date" class="form-control" name="fecha" required />
-            </div>
+	<div id="carrusel" class="carousel slide mb-4" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img th:src="@{/img/reserva1.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 1" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva2.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 2" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva3.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 3" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva4.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 4" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva5.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 5" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva6.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 6" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva7.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 7" />
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{/img/reserva8.jpg}"
+					class="d-block w-100 img-fluid rounded" alt="Imagen 8" />
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button"
+			data-bs-target="#carrusel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next" type="button"
+			data-bs-target="#carrusel" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
 
-            <div class="mb-3">
-              <label class="form-label">Hora</label>
-              <input type="time" class="form-control" name="hora" required />
-            </div>
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+	</footer>
 
-            <div class="mb-3">
-              <label class="form-label">Número de personas</label>
-              <input type="number" class="form-control" name="personas" min="1" required />
-            </div>
-
-            <!-- Escenario -->
-            <div class="mb-3">
-              <label class="form-label">Escenario</label>
-              <select class="form-select" name="escenario" id="escenarioSelect" required>
-                <option selected disabled>Selecciona un escenario</option>
-                <option value="Castillo">Castillo</option>
-                <option value="Lagos">Lagos de Covadonga</option>
-                <option value="Pueblo">Pueblo abandonado</option>
-                <option value="Bosque">Bosque</option>
-                <option value="Playa">Playa</option>
-                <option value="Mina">Mina</option>
-              </select>
-            </div>
-
-            <!-- Modos de juego -->
-            <div class="mb-3">
-              <label class="form-label">Modo de juego</label>
-              <select class="form-select" name="modo" id="modoSelect" required>
-                <option selected disabled>Selecciona un modo</option>
-              </select>
-            </div>
-
-            <!-- Información adicional -->
-            <div class="mb-3">
-              <label class="form-label">Información adicional</label>
-              <textarea class="form-control" name="infoAdicional" rows="3"></textarea>
-            </div>
-
-            <div class="text-center">
-              <button type="submit" class="btn btn-success">Confirmar reserva</button>
-            </div>
-          </form>
-
-  </section>
-
-   <div id="carrusel" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="img/reserva1.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 1"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="img/reserva2.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 2"
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="img/reserva3.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 3"
-            />
-          </div>
-                    <div class="carousel-item">
-            <img
-              src="img/reserva4.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 2"
-            />
-          </div>
-                    <div class="carousel-item">
-            <img
-              src="img/reserva5.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 2"
-            />
-          </div>
-
-                              <div class="carousel-item">
-            <img
-              src="img/reserva6.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 2"
-            />
-          </div>
-                              <div class="carousel-item">
-            <img
-              src="img/reserva7.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 2"
-            />
-          </div>
-                              <div class="carousel-item">
-            <img
-              src="img/reserva8.jpg"
-              class="d-block w-100 img-fluid rounded"
-              alt="Imagen 2"
-            />
-          </div>
-
-    
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carrusel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carrusel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <footer>
-      <p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
-    </footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-<script>
-    const modosPorEscenario = {
-      Castillo: ["Asalto al castillo", "Rey de la colina"],
-      Lagos: ["Captura la bandera", "Rescate acuático"],
-      Pueblo: ["Combate urbano", "Buscar y destruir"],
-      Bosque: ["Supervivencia", "Caza del francotirador"],
-      Playa: ["Invasión anfibia", "Arena libre"],
-      Mina: ["Operación subterránea", "Extracción del tesoro"]
-    };
-
-    const escenarioSelect = document.getElementById("escenarioSelect");
-    const modoSelect = document.getElementById("modoSelect");
-
-    escenarioSelect.addEventListener("change", () => {
-      const seleccionado = escenarioSelect.value;
-      const modos = modosPorEscenario[seleccionado] || [];
-
-      // Limpiar opciones anteriores
-      modoSelect.innerHTML = '<option selected disabled>Selecciona un modo</option>';
-
-      // Añadir nuevos modos
-      modos.forEach(modo => {
-        const option = document.createElement("option");
-        option.value = modo;
-        option.textContent = modo;
-        modoSelect.appendChild(option);
-      });
-    });
-  </script>
+	<script th:src="@{/js/timeout.js}"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/reservas.js}"></script>
 </body>
 </html>

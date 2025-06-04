@@ -1,49 +1,47 @@
 package com.pelayo.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
+
 import org.springframework.stereotype.Service;
 
+import com.pelayo.model.Escenario;
 import com.pelayo.model.Evento;
 import com.pelayo.repository.EventoRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class EventoService {
 
-	@Autowired 
+	@Autowired
 	private EventoRepository eventoRepo;
-	
-	public void insertar(Evento evento) {
-        eventoRepo.saveAndFlush(evento);
-    }
 
-    public List<Evento> verTodos() {
-        return eventoRepo.findAll();
-    }
+	public List<Evento> findAll() {
+		return eventoRepo.findAll();
+	}
 
-    public Optional<Evento> buscarPorId(Long id) {
-        return eventoRepo.findById(id);
-    }
+	public Optional<Evento> buscarPorId(Long id) {
+		Evento evento = eventoRepo.findById(id).orElse(null);
+		return Optional.ofNullable(evento);
+	}
 
-    public List<Evento> buscarPorFechaHora(LocalDateTime fechaHora) {
-        return eventoRepo.findByFechaHora(fechaHora);
-    }
+	public List<Evento> findByEscenarioAndFecha(Escenario escenario, LocalDate fecha) {
+		return eventoRepo.findByEscenarioAndFecha(escenario, fecha);
+	}
 
-    @Transactional
-    @Modifying
-    public boolean borrarEvento(Long id) {
-        if (eventoRepo.existsById(id)) {
-            eventoRepo.deleteById(id);
-            return true;
-        }
-        return false;
-    }
-	
-	
+	public List<Evento> verTodos() {
+		return eventoRepo.findAll();
+	}
+
+	public void guardar(Evento evento) {
+		eventoRepo.save(evento);
+	}
+
+	public void eliminarPorId(Long id) {
+		eventoRepo.deleteById(id);
+	}
+
 }

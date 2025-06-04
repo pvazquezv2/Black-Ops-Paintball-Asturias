@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Listado de Personas | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/admin}">
+				<img th:src="@{/img/logo.png}" alt="Logo Black Ops"
+				title="Panel Admin"/> <span class="ms-2">ADMINISTRACIÓN</span>
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link btn btn-outline-light"
+						th:href="@{/logout}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container admin-menu">
+		<h1 class="text-center mb-5">Listado de Personas</h1>
+		<section class="container my-5">
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead class="table-dark">
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Primer Apellido</th>
+							<th>Segundo Apellido</th>
+							<th>Email</th>
+							<th>Usuario</th>
+							<th>Rol</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="persona : ${personas}">
+							<td th:text="${persona.id}">4</td>
+							<td th:text="${persona.nombre}">Pack básico</td>
+							<td th:text="${persona.apellido1}">Competitivo</td>
+							<td th:text="${persona.apellido2}">Escenario 1</td>
+							<td th:text="${persona.email}">Sin gluten</td>
+							<td th:text="${persona.nombreUsuario}">CONFIRMADO</td>
+							<td th:text="${persona.rol}">Rol</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<div class="col-md-12">
+			<a th:href="@{/admin/gestion_personas}"
+				class="btn btn-dark w-100 p-4 shadow card-transparente"> Volver a la
+				gestión de personas </a>
+		</div>
+	</main>
+
+	<footer class="mt-5 text-center">
+		<p>&copy; 2025 Black Ops Paintball Asturias | Panel de
+			Administración</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

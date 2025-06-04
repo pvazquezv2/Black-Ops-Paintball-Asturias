@@ -1,179 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reglamento | Black Ops Paintball Asturias</title>
-    <link rel="icon" type="image/png" href="img/logo.png" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="img/logo.png" alt="Black Ops Paintball Asturias" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
-            <li class="nav-item">
-              <a class="nav-link" href="precios.html">Precios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="escenarios.html">Escenarios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="eventos.html">Eventos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="modosDeJuego.html">Modos de Juego</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="equipamiento.html">Equipamiento</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                href="porqueNosotros.html"
-                >¿Por qué nosotros?</a
-              >
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="quienesSomos.html"
-                    >Quienes Somos</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="reglamento.html">Reglamento</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="preguntasFrecuentes.html"
-                    >Preguntas Frecuentes</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-glow ms-3" href="#">INICIAR SESIÓN</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reglamento | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
 
-    <header class="hero">
-      <video autoplay muted loop playsinline>
-        <source src="videos/contacto.mp4" type="video/mp4" />
-      </video>
-      <div class="content">
-        <h1>REGLAMENTO</h1>
-        <p>Aprendiendo como se juega disfrutarás mucho más</p>
-        <a class="btn btn-glow" href="#">RESERVA YA</a>
-      </div>
-    </header>
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-transparente">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+				<img th:src="@{/img/logo.png}" alt="Black Ops Paintball Asturias"
+				title="Black Ops Paintball Asturias" />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+					<li class="nav-item"><a class="nav-link" th:href="@{/precios}"
+						title="precios">Precios</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/escenarios}" title="escenarios">Escenarios</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/eventos}"
+						title="eventos">Eventos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/modosDeJuego}" title="modos de juego">Modos de
+							Juego</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false" href="#"
+						title="¿por qué nosotros?"> ¿Por qué nosotros?
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/quienesSomos}"
+								title="quienes somos">Quienes Somos</a></li>
+							<li><a class="dropdown-item" th:href="@{/reglamento}"
+								title="reglamento">Reglamento</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas
+									Frecuentes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contacto}" title="contacto">Contacto</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a></li>
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<span sec:authentication="name">Usuario</span>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="userDropdown">
+							<li><a class="dropdown-item" th:href="@{/misReservas}"
+								title="Mis Reservas">Mis Reservas</a></li>
+							<li><a class="dropdown-item" th:href="@{/misEventos}"
+								title="Mis Eventos">Mis Eventos</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post" >
+									<button type="submit" class="dropdown-item">Cerrar
+										sesión</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <section class="container my-5">
-      <h2 class="text-center mb-4">Reglamento Oficial</h2>
-      <div class="p-4 rounded shadow reglamento">
-        <p class="mb-4 text-center">
-          Para garantizar la seguridad, la diversión y el respeto entre todos
-          los participantes, en Black Ops Paintball es obligatorio seguir las
-          siguientes normas:
-        </p>
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/contacto.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<h1>REGLAMENTO</h1>
+			<p>Aprendiendo como se juega disfrutarás mucho más</p>
+			<a class="btn btn-glow" th:href="@{/reservar}">RESERVA YA</a>
+		</div>
+	</header>
 
-        <h4 class="mb-3">1. Normas Generales</h4>
-        <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item bg-transparent">
-            ✔️ Todos los jugadores deben firmar la hoja de consentimiento antes
-            de jugar.
-          </li>
-          <li class="list-group-item bg-transparent">
-            ✔️ El uso de gafas protectoras es obligatorio en todo momento dentro
-            de la zona de juego.
-          </li>
-          <li class="list-group-item bg-transparent">
-            ✔️ Está prohibido disparar fuera de las zonas delimitadas.
-          </li>
-          <li class="list-group-item bg-transparent">
-            ✔️ Se debe respetar siempre al personal y al resto de jugadores.
-          </li>
-        </ul>
+	<section class="container my-5">
+		<h2 class="text-center mb-4">Reglamento Oficial</h2>
+		<div class="p-4 rounded shadow reglamento">
+			<p class="mb-4 text-center">Para garantizar la seguridad, la
+				diversión y el respeto entre todos los participantes, en Black Ops
+				Paintball es obligatorio seguir las siguientes normas:</p>
 
-        <h4 class="mb-3">2. Seguridad en el Juego</h4>
-        <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item bg-transparent">
-            🛡️ Queda terminantemente prohibido quitarse la máscara durante una
-            partida.
-          </li>
-          <li class="list-group-item bg-transparent">
-            🛡️ No se permite el contacto físico intencionado.
-          </li>
-          <li class="list-group-item bg-transparent">
-            🛡️ Las marcadoras no deben superar los 300 FPS (pies por segundo).
-          </li>
-          <li class="list-group-item bg-transparent">
-            🛡️ Las armas deben tener siempre puesto el seguro fuera de juego.
-          </li>
-        </ul>
+			<h4 class="mb-3">1. Normas Generales</h4>
+			<ul class="list-group list-group-flush mb-4">
+				<li class="list-group-item bg-transparent">✔️ Todos los
+					jugadores deben firmar la hoja de consentimiento antes de jugar.</li>
+				<li class="list-group-item bg-transparent">✔️ El uso de gafas
+					protectoras es obligatorio en todo momento dentro de la zona de
+					juego.</li>
+				<li class="list-group-item bg-transparent">✔️ Está prohibido
+					disparar fuera de las zonas delimitadas.</li>
+				<li class="list-group-item bg-transparent">✔️ Se debe respetar
+					siempre al personal y al resto de jugadores.</li>
+			</ul>
+			<h4 class="mb-3">2. Seguridad en el Juego</h4>
+			<ul class="list-group list-group-flush mb-4">
+				<li class="list-group-item bg-transparent">🛡️ Queda
+					terminantemente prohibido quitarse la máscara durante una partida.
+				</li>
+				<li class="list-group-item bg-transparent">🛡️ No se permite el
+					contacto físico intencionado.</li>
+				<li class="list-group-item bg-transparent">🛡️ Las marcadoras
+					no deben superar los 300 FPS (pies por segundo).</li>
+				<li class="list-group-item bg-transparent">🛡️ Las armas deben
+					tener siempre puesto el seguro fuera de juego.</li>
+			</ul>
+			<h4 class="mb-3">3. Reglas de Eliminación</h4>
+			<ul class="list-group list-group-flush mb-4">
+				<li class="list-group-item bg-transparent">🎯 Un jugador es
+					eliminado cuando recibe una marca visible de pintura.</li>
+				<li class="list-group-item bg-transparent">🎯 Los jugadores
+					eliminados deben salir del campo con la mano en alto y sin quitarse
+					la máscara.</li>
+				<li class="list-group-item bg-transparent">🎯 No está permitido
+					continuar disparando tras ser eliminado.</li>
+			</ul>
+			<h4 class="mb-3">4. Comportamiento y Respeto</h4>
+			<ul class="list-group list-group-flush mb-4">
+				<li class="list-group-item bg-transparent">🤝 No se tolerarán
+					insultos, amenazas ni comportamientos agresivos.</li>
+				<li class="list-group-item bg-transparent">🤝 Está prohibido
+					consumir alcohol o drogas antes o durante la actividad.</li>
+				<li class="list-group-item bg-transparent">🤝 El incumplimiento
+					del reglamento puede conllevar la expulsión inmediata sin
+					reembolso.</li>
+			</ul>
+			<div class="text-center mt-4">
+				<p>Gracias por colaborar en mantener un entorno seguro, justo y
+					divertido para todos.</p>
+			</div>
+		</div>
+	</section>
 
-        <h4 class="mb-3">3. Reglas de Eliminación</h4>
-        <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item bg-transparent">
-            🎯 Un jugador es eliminado cuando recibe una marca visible de
-            pintura.
-          </li>
-          <li class="list-group-item bg-transparent">
-            🎯 Los jugadores eliminados deben salir del campo con la mano en
-            alto y sin quitarse la máscara.
-          </li>
-          <li class="list-group-item bg-transparent">
-            🎯 No está permitido continuar disparando tras ser eliminado.
-          </li>
-        </ul>
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+	</footer>
 
-        <h4 class="mb-3">4. Comportamiento y Respeto</h4>
-        <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item bg-transparent">
-            🤝 No se tolerarán insultos, amenazas ni comportamientos agresivos.
-          </li>
-          <li class="list-group-item bg-transparent">
-            🤝 Está prohibido consumir alcohol o drogas antes o durante la
-            actividad.
-          </li>
-          <li class="list-group-item bg-transparent">
-            🤝 El incumplimiento del reglamento puede conllevar la expulsión
-            inmediata sin reembolso.
-          </li>
-        </ul>
-
-        <div class="text-center mt-4">
-          <p>
-            Gracias por colaborar en mantener un entorno seguro, justo y
-            divertido para todos.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
-    </footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-  </body>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>

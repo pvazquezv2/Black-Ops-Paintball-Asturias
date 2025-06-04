@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contacto | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-transparente">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+				<img th:src="@{/img/logo.png}" alt="Black Ops Paintball Asturias"
+				title="Black Ops Paintball Asturias" />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+					<li class="nav-item"><a class="nav-link" th:href="@{/precios}"
+						title="precios">Precios</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/escenarios}" title="escenarios">Escenarios</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/eventos}"
+						title="eventos">Eventos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/modosDeJuego}" title="modos de juego">Modos de
+							Juego</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false" href="#"
+						title="¿por qué nosotros?"> ¿Por qué nosotros?
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/quienesSomos}"
+								title="quienes somos">Quienes Somos</a></li>
+							<li><a class="dropdown-item" th:href="@{/reglamento}"
+								title="reglamento">Reglamento</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas
+									Frecuentes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contacto}" title="contacto">Contacto</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a></li>
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<span sec:authentication="name">Usuario</span>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="userDropdown">
+							<li><a class="dropdown-item" th:href="@{/misReservas}"
+								title="Mis Reservas">Mis Reservas</a></li>
+							<li><a class="dropdown-item" th:href="@{/misEventos}"
+								title="Mis Eventos">Mis Eventos</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post">
+									<button type="submit" class="dropdown-item">Cerrar
+										sesión</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/contacto.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<h1>CONTACTO</h1>
+			<p>No dispares al aire... ¡mándanos un mensaje!</p>
+			<a class="btn btn-glow" th:href="@{/reservar}" title="reservar">RESERVA
+				YA</a>
+			<div th:if="${mensaje}" class="alert alert-success"
+				th:text="${mensaje}"></div>
+		</div>
+	</header>
+
+	<section class="container my-5">
+		<h2 class="text-center mb-4">Formulario de Contacto</h2>
+		<form id="formulario-contacto" th:action="@{/contacto/enviar}" method="post"
+			class="row g-4 mx-auto">
+			<div class="col-md-6">
+				<label for="nombre" class="form-label">Nombre</label> <input
+					type="text" name="nombre" id="nombre" class="form-control" required />
+			</div>
+			<div class="col-md-6">
+				<label for="apellido1" class="form-label">Primer Apellido</label> <input
+					type="text" name="apellido1" id="apellido1" class="form-control"
+					required />
+			</div>
+			<div class="col-md-6">
+				<label for="apellido2" class="form-label">Segundo Apellido</label> <input
+					type="text" name="apellido2" id="apellido2" class="form-control"
+					required />
+			</div>
+			<div class="col-md-6">
+				<label for="email" class="form-label">Correo electrónico</label> <input
+					type="email" name="email" id="email" class="form-control" required />
+			</div>
+			<div class="col-12">
+				<label for="asunto" class="form-label">Asunto</label> <input
+					type="text" name="asunto" id="asunto" class="form-control" required />
+			</div>
+			<div class="col-12">
+				<label for="mensaje" class="form-label">Mensaje</label>
+				<textarea name="mensaje" id="mensaje" class="form-control" rows="5"
+					required></textarea>
+			</div>
+			<div class="col-12 text-center">
+				<button type="submit" class="btn btn-glow" title="enviar mensaje">Enviar
+					mensaje</button>
+			</div>
+		</form>
+	</section>
+
+	<section class="container my-5">
+		<h3 class="text-center mb-3">Horario de atención</h3>
+		<ul class="list-group list-group-flush text-center">
+			<li class="list-group-item">Lunes a Viernes: 9:00 - 21:00</li>
+			<li class="list-group-item">Sábados y Domingos: 10:00 - 20:00</li>
+			<li class="list-group-item">Festivos: Consultar disponibilidad</li>
+		</ul>
+
+	</section>
+	<section class="container my-5 text-center social">
+		<h3 class="mb-3">Otras formas de contacto</h3>
+		<p>
+			<img th:src="@{/img/llamada.png}" alt="" /> <strong>+34 612
+				345 678</strong>
+		</p>
+		<p>
+			<img th:src="@{/img/gmail.png}" alt="Email" /> <strong>info@blackopspaintball.es</strong>
+		</p>
+		<p>
+			<img th:src="@{/img/marcador-de-posicion.png}" alt="" /> Dirección:
+			Ctra. a la Aventura, 33 - Asturias
+		</p>
+		<div class="d-flex justify-content-center gap-3 mt-3">
+			<a href="https://www.instagram.com" target="_blank"> <img
+				th:src="@{/img/instagram (1).png}" width="30" alt="Instagram" />
+			</a> <a href="https://www.x.com" target="_blank"> <img
+				th:src="@{/img/twitter.png}" width="30" alt="X" />
+			</a> <a href="https://www.youtube.com/@BlackOpsPaintballasturias"
+				target="_blank"> <img th:src="@{/img/youtube.png}" width="30"
+				alt="WhatsApp" />
+			</a>
+		</div>
+	</section>
+
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+	</footer>
+	<script th:src="@{/js/timeout.js}"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

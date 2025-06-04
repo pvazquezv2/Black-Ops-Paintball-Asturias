@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>Listado de todas las reservas | Black Ops Paintball
+	Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/admin}">
+				<img th:src="@{/img/logo.png}" alt="Logo Black Ops"
+				title="Panel Admin" /> <span class="ms-2">ADMINISTRACIÓN</span>
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link btn btn-outline-light"
+						th:href="@{/logout}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container admin-menu">
+		<h1 class="text-center mb-5">Listado de todas las Reservas</h1>
+		<section class="container my-5">
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead class="table-dark">
+						<tr>
+							<th>ID</th>
+							<th>Fecha realizada</th>
+							<th>Fecha reserva</th>
+							<th>Usuario</th>
+							<th>Número personas</th>
+							<th>Pack</th>
+							<th>Modo juego</th>
+							<th>Escenario</th>
+							<th>Info adicional</th>
+							<th>Estado</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="reserva : ${reservas}">
+							<td th:text="${reserva.id}">1</td>
+							<td
+								th:text="${#temporals.format(reserva.fechaRealizada, 'dd-MM-yyyy')}">2025-05-28</td>
+							<td
+								th:text="${#temporals.format(reserva.fechaReserva, 'dd-MM-yyyy')}">2025-05-30</td>
+							<td th:text="${reserva.persona.nombreUsuario}">usuario</td>
+							<td th:text="${reserva.numeroPersonas}">4</td>
+							<td th:text="${reserva.pack}">Pack básico</td>
+							<td th:text="${reserva.modoJuego}">Competitivo</td>
+							<td th:text="${reserva.escenario.nombre}">Escenario 1</td>
+							<td th:text="${reserva.infoAdicional}">Sin gluten</td>
+							<td th:text="${reserva.estado}">CONFIRMADO</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<div class="col-md-12">
+			<a th:href="@{/admin/listado_reservas}"
+				class="btn btn-dark w-100 p-4 shadow card-transparente"> Volver al menú
+				de listado de reservas </a>
+		</div>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Panel de Administración</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

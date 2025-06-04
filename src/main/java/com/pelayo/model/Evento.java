@@ -1,12 +1,14 @@
 package com.pelayo.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,42 +21,48 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "eventos")
 public class Evento implements Serializable {
-	
+
 	private static final Long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(nullable = false)
-	private String nombre;
-	
-	@Column(nullable = false)
+
+	private String titulo;
+	private String categoria;
+	private LocalDate fecha;
+
+	private LocalTime horaInicio;
+
+	private LocalTime horaFin;
+
 	private String descripcion;
-	
-	@Column(nullable = false)
-	private LocalDateTime fechaHora;
-	
-	@Column(nullable = false)
-	private String premio;
-	
+	private String imagenUrl;
+
 	@ManyToOne
-    @JoinColumn(name = "id_escenario")
-    private Escenario escenario;
-	
+	@JoinColumn(name = "id_escenario")
+	private Escenario escenario;
+
 	@OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Suscripcion> suscripciones;
-	
+	private List<Suscripcion> suscripciones;
+
 	public Evento() {
-		
+
 	}
 
-	public Evento(String nombre, String descripcion, LocalDateTime fechaHora, String premio) {
+	public Evento(Long id, String titulo, String categoria, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin,
+			String descripcion, String imagenUrl, Escenario escenario, List<Suscripcion> suscripciones) {
 		super();
-		this.nombre = nombre;
+		this.id = id;
+		this.titulo = titulo;
+		this.categoria = categoria;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
 		this.descripcion = descripcion;
-		this.fechaHora = fechaHora;
-		this.premio = premio;
+		this.imagenUrl = imagenUrl;
+		this.escenario = escenario;
+		this.suscripciones = suscripciones;
 	}
 
 	public Long getId() {
@@ -65,12 +73,44 @@ public class Evento implements Serializable {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public LocalTime getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(LocalTime horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public LocalTime getHoraFin() {
+		return horaFin;
+	}
+
+	public void setHoraFin(LocalTime horaFin) {
+		this.horaFin = horaFin;
 	}
 
 	public String getDescripcion() {
@@ -81,20 +121,12 @@ public class Evento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public LocalDateTime getFechaHora() {
-		return fechaHora;
+	public String getImagenUrl() {
+		return imagenUrl;
 	}
 
-	public void setFechaHora(LocalDateTime fechaHora) {
-		this.fechaHora = fechaHora;
-	}
-
-	public String getPremio() {
-		return premio;
-	}
-
-	public void setPremio(String premio) {
-		this.premio = premio;
+	public void setImagenUrl(String imagenUrl) {
+		this.imagenUrl = imagenUrl;
 	}
 
 	public Escenario getEscenario() {
@@ -115,7 +147,15 @@ public class Evento implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(descripcion, escenario, fechaHora, id, nombre, premio);
+		return Objects.hash(categoria, descripcion, escenario, fecha, horaFin, horaInicio, id, imagenUrl, suscripciones,
+				titulo);
+	}
+
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", titulo=" + titulo + ", categoria=" + categoria + ", fecha=" + fecha
+				+ ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", descripcion=" + descripcion
+				+ ", imagenUrl=" + imagenUrl + ", escenario=" + escenario + ", suscripciones=" + suscripciones + "]";
 	}
 
 	@Override
@@ -127,23 +167,28 @@ public class Evento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Evento other = (Evento) obj;
-		return Objects.equals(descripcion, other.descripcion) && Objects.equals(escenario, other.escenario)
-				&& Objects.equals(fechaHora, other.fechaHora) && Objects.equals(id, other.id)
-				&& Objects.equals(nombre, other.nombre) && Objects.equals(premio, other.premio);
+		return Objects.equals(categoria, other.categoria) && Objects.equals(descripcion, other.descripcion)
+				&& Objects.equals(escenario, other.escenario) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(horaFin, other.horaFin) && Objects.equals(horaInicio, other.horaInicio)
+				&& Objects.equals(id, other.id) && Objects.equals(imagenUrl, other.imagenUrl)
+				&& Objects.equals(suscripciones, other.suscripciones) && Objects.equals(titulo, other.titulo);
 	}
 
-	@Override
-	public String toString() {
-		return "Evento [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaHora=" + fechaHora
-				+ ", premio=" + premio + ", escenario=" + escenario + "]";
+	public String getColorClase() {
+		switch (categoria) {
+		case "Torneo Oficial":
+			return "bg-primary";
+		case "Evento Temático":
+			return "bg-success";
+		case "Evento Corporativo":
+			return "bg-warning text-dark";
+		case "Familiar / Infantil":
+			return "bg-info";
+		case "Liga":
+			return "bg-dark";
+		default:
+			return "bg-secondary";
+		}
 	}
-	
-	
-	
-	
-	
-	 
-	
-	
 
 }

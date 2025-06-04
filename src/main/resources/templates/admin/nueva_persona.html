@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Añadir Persona | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/admin}">
+				<img th:src="@{/img/logo.png}" alt="Logo Black Ops"
+				title="Panel Admin" /> <span
+				class="ms-2">ADMINISTRACIÓN</span>
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link btn btn-outline-light"
+						th:href="@{/logout}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container admin-menu">
+		<h1 class="text-center mb-5">Añadir Persona</h1>
+		<section class="container my-5">
+			<div class="content">
+				<div class="container">
+					<form class="form" th:action="@{/admin/nueva_persona}"
+						method="post" th:object="${persona}">
+						<input placeholder="Nombre" class="input" type="text"
+							th:field="*{nombre}" required /> <input
+							placeholder="Primer Apellido" class="input" type="text"
+							th:field="*{apellido1}" required /> <input
+							placeholder="Segundo Apellido" class="input" type="text"
+							th:field="*{apellido2}" required /> <input
+							placeholder="Correo electrónico" class="input" type="email"
+							th:field="*{email}" required /> <input placeholder="Usuario"
+							class="input" type="text" th:field="*{nombreUsuario}" required />
+						<input placeholder="Contraseña" class="input" type="password"
+							name="password" required /> <input
+							placeholder="Confirmar Contraseña" class="input" type="password"
+							name="confirmPassword" required /> <select class="input"
+							name="rol" id="rolSelect" required>
+							<option value="" disabled selected>Selecciona un rol</option>
+							<option value="USUARIO" style="color: black;">USUARIO</option>
+							<option value="ADMIN" style="color: black;">ADMIN</option>
+						</select>
+						<button class="login-btn" type="submit">Añadir</button>
+						<div th:if="${errorRegistro}" class="alert alert-danger"
+							th:text="${errorRegistro}"></div>
+						<div th:if="${msgRegistro}" class="alert alert-success"
+							th:text="${msgRegistro}"></div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<div class="col-md-12">
+			<a th:href="@{/admin/gestion_personas}"
+				class="btn btn-dark w-100 p-4 shadow card-transparente"> Volver a la
+				gestión de personas </a>
+		</div>
+		</div>
+	</main>
+
+	<footer class="mt-5 text-center">
+		<p>&copy; 2025 Black Ops Paintball Asturias | Panel de
+			Administración</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

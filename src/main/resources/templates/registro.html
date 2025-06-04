@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registrarse | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/paintball2.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<div class="container">
+				<form class="form" th:action="@{/registro}" method="post"
+					th:object="${persona}">
+					<div class="form_details">Registrarse</div>
+					<input placeholder="Nombre" class="input" type="text"
+						th:field="*{nombre}" required /> <input
+						placeholder="Primer Apellido" class="input" type="text"
+						th:field="*{apellido1}" required /> <input
+						placeholder="Segundo Apellido" class="input" type="text"
+						th:field="*{apellido2}" required /> <input
+						placeholder="Correo electrónico" class="input" type="email"
+						th:field="*{email}" required /> <input placeholder="Usuario"
+						class="input" type="text" th:field="*{nombreUsuario}" required />
+					<input placeholder="Contraseña" class="input" type="password"
+						name="password" required /> <input
+						placeholder="Confirmar Contraseña" class="input" type="password"
+						name="confirmPassword" required />
+					<button class="login-btn" type="submit">Registrarse</button>
+					<div th:if="${errorRegistro}" class="alert alert-danger"
+						th:text="${errorRegistro}"></div>
+					<div th:if="${msgRegistro}" class="alert alert-success"
+						th:text="${msgRegistro}"></div>
+					<div class="switch">
+						¿Ya estás registrado? <a th:href="@{/login}">Iniciar sesión</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</header>
+
+<script th:src="@{/js/timeout.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

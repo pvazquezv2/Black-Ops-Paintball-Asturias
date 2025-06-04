@@ -1,273 +1,156 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventos | Black Ops Paintball Asturias</title>
-    <link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" th:href="@{/index}">
-          <img
-            th:src="@{/img/logo.png}"
-            alt="Black Ops Paintball Asturias"
-            title="Black Ops Paintball Asturias"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/precios}" title="precios">Precios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/escenarios}" title="escenarios">Escenarios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/eventos}" title="eventos">Eventos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/modosDeJuego.html}" title="modos de juego">Modos de Juego</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/equipamiento.html}" title="equipamiento">Equipamiento</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                th:href="@{/porqueNosotros.html}"
-                title="¿por qué nosotros?"
-              >¿Por qué nosotros?</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" th:href="@{/quienesSomos}" title="quienes somos">Quienes Somos</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" th:href="@{/reglamento}" title="reglamento">Reglamento</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas Frecuentes</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/contacto}" title="contacto">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-glow ms-3" th:href="@{/login}" title="iniciar sesión">INICIAR SESIÓN</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eventos | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<script th:src="@{/js/confirm.js}"></script>
+</head>
+<body>
 
-    <header class="hero">
-      <video autoplay muted loop playsinline>
-        <source th:src="@{/videos/paintball3.mp4}" type="video/mp4" />
-      </video>
-      <div class="content">
-        <h1>EVENTOS</h1>
-        <p>Distintas reglas, misma adrenalina. ¿Cuál es tu modo?</p>
-        <a class="btn btn-glow" th:href="@{/reservar}" title="reservar">RESERVA YA</a>
-      </div>
-    </header>
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-transparente">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+				<img th:src="@{/img/logo.png}" alt="Black Ops Paintball Asturias"
+				title="Black Ops Paintball Asturias" />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+					<li class="nav-item"><a class="nav-link" th:href="@{/precios}"
+						title="precios">Precios</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/escenarios}" title="escenarios">Escenarios</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/eventos}"
+						title="eventos">Eventos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/modosDeJuego}" title="modos de juego">Modos de
+							Juego</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false" href="#"
+						title="¿por qué nosotros?"> ¿Por qué nosotros?
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/quienesSomos}"
+								title="quienes somos">Quienes Somos</a></li>
+							<li><a class="dropdown-item" th:href="@{/reglamento}"
+								title="reglamento">Reglamento</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas
+									Frecuentes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contacto}" title="contacto">Contacto</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a></li>
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<span sec:authentication="name">Usuario</span>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="userDropdown">
+							<li><a class="dropdown-item" th:href="@{/misReservas}"
+								title="Mis Reservas">Mis Reservas</a></li>
+							<li><a class="dropdown-item" th:href="@{/misEventos}"
+								title="Mis Eventos">Mis Eventos</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post" >
+									<button type="submit" class="dropdown-item">Cerrar
+										sesión</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <section class="container my-5">
-      <h1 class="text-center mb-4">Eventos Especiales</h1>
-      <p class="text-center mb-5">
-        Participa en nuestros próximos eventos. Vive la experiencia del
-        paintball como nunca antes.
-      </p>
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/paintball3.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<h1>EVENTOS</h1>
+			<p>Distintas reglas, misma adrenalina. ¿Cuál es tu modo?</p>
+			<a class="btn btn-glow" th:href="@{/reservar}" title="reservar">RESERVA
+				YA</a>
+			<div th:if="${mensaje}" class="alert alert-success"
+				th:text="${mensaje}"></div>
+			<div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+		</div>
+	</header>
 
-      <!-- FILTRO (opcional) -->
-      <div class="d-flex justify-content-center mb-4 flex-wrap gap-2">
-        <button class="btn btn-outline-primary">Torneos Oficiales</button>
-        <button class="btn btn-outline-success">Eventos Temáticos</button>
-        <button class="btn btn-outline-warning">Corporativos</button>
-        <button class="btn btn-outline-info">Familiar / Infantil</button>
-        <button class="btn btn-outline-dark">Liga</button>
-      </div>
+	<section class="container my-5">
+		<h1 class="text-center mb-4">Eventos Especiales</h1>
+		<p class="text-center mb-5">Participa en nuestros próximos
+			eventos. Vive la experiencia del paintball como nunca antes.</p>
+		<div class="d-flex justify-content-center mb-4 flex-wrap gap-2">
+			<button class="btn btn-outline-primary">Torneos Oficiales</button>
+			<button class="btn btn-outline-success">Eventos Temáticos</button>
+			<button class="btn btn-outline-warning">Corporativos</button>
+			<button class="btn btn-outline-info">Familiar / Infantil</button>
+			<button class="btn btn-outline-dark">Liga</button>
+		</div>
+		<div th:each="evento : ${eventos}" class="card mb-4 shadow-lg">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img th:src="${evento.imagenUrl}"
+						class="img-fluid rounded-start h-100 object-fit-cover" />
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h4 class="card-title" th:text="${evento.titulo}"></h4>
+						<span class="badge" th:text="${evento.categoria}"
+							th:classappend="${evento.colorClase}"></span>
+						<p class="mb-1">
+							Fecha: <span
+								th:text="${#temporals.format(evento.fecha, 'dd-MM-yyyy')}"></span>
+						</p>
+						<p class="mb-1">
+							Hora inicio: <span
+								th:text="${#temporals.format(evento.horaInicio, 'HH:mm')}"></span>
+						</p>
+						<p class="mb-1">
+							Hora fin: <span
+								th:text="${#temporals.format(evento.horaFin, 'HH:mm')}"></span>
+						</p>
+						<p class="mb-1">
+							<strong>Escenario:</strong> <a class="ubicacion-escenarios"
+								th:href="@{/escenarios}" th:text="${evento.escenario.nombre}"></a>
+						</p>
+						<p class="card-text mt-2" th:text="${evento.descripcion}"></p>
+						<form th:action="@{/suscribirse}" method="post" id="formulario-evento"
+							 onsubmit="return confirmarSuscripcion(1)">
+							<input type="hidden" th:name="eventoId" th:value="${evento.id}" />
+							<button type="submit" class="btn btn-success mt-2"
+								title="Suscribirse">Suscribirse</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
-      <!-- EVENTO 1 -->
-      <div class="card mb-4 shadow-lg">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              th:src="@{/img/castillo8.jpg}"
-              class="img-fluid rounded-start h-100 object-fit-cover"
-              alt="Imagen del evento 1"
-              title="Torneo Nacional de Black Ops"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title">Torneo Nacional de Black Ops</h4>
-              <span class="badge bg-primary mb-2">Torneo Oficial</span>
-              <p class="mb-1"><strong>Fecha:</strong> 25 de junio, 2025</p>
-              <p class="mb-1"><strong>Hora:</strong> 10:00 a 19:00</p>
-              <p class="mb-1">
-                <strong>Escenario:</strong>
-                <a class="ubicacion-escenarios" th:href="@{/escenarios}" title="escenarios">El Bastión del Norte</a>
-              </p>
-              <p class="card-text mt-2">
-                El torneo más importante del año. Equipos de toda España
-                compiten en intensas partidas de eliminación y asalto. Premios,
-                trofeos y más.
-              </p>
-              <button class="btn btn-success mt-2" title="Suscribirse">Suscribirse</button>
-            </div>
-          </div>
-        </div>
-      </div>
+		
+	</section>
 
-      <!-- EVENTO 2 -->
-      <div class="card mb-4 shadow-lg">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              th:src="@{/img/evento_noche.jpg}"
-              class="img-fluid rounded-start h-100 object-fit-cover"
-              alt="Imagen del evento 2"
-              title="La noche de los No Muertos"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title">La Noches de los No Muertos</h4>
-              <span class="badge bg-success mb-2">Evento Temático</span>
-              <p class="mb-1"><strong>Fecha:</strong> 01 de julio, 2025</p>
-              <p class="mb-1"><strong>Hora:</strong> 20:00 a 00:00</p>
-              <p class="mb-1">
-                <strong>Escenario:</strong>
-                <a class="ubicacion-escenarios" th:href="@{/escenarios}" title="escenarios">La Casona Perdida</a>
-              </p>
-              <p class="card-text mt-2">
-                Sobrevive a una horda de jugadores zombis en un entorno oscuro y
-                apocalíptico. ¡Trae linterna y nervios de acero!
-              </p>
-              <button class="btn btn-success mt-2" title="Suscribirse">Suscribirse</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EVENTO 3 -->
-      <div class="card mb-4 shadow-lg">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              th:src="@{/img/mina3.jpg}"
-              class="img-fluid rounded-start h-100 object-fit-cover"
-              alt="Imagen del evento 3"
-              title="Black Ops Team Building"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title">Black Ops Team Building</h4>
-              <span class="badge bg-warning text-dark mb-2">Evento Corporativo</span>
-              <p class="mb-1"><strong>Fecha:</strong> 18 de Julio, 2025</p>
-              <p class="mb-1"><strong>Hora:</strong> 10:00 a 13:00</p>
-              <p class="mb-1">
-                <strong>Escenario:</strong>
-                <a class="ubicacion-escenarios" th:href="@{/escenarios}" title="escenarios">Fuerza Minera</a>
-              </p>
-              <p class="card-text mt-2">
-                Mejora el trabajo en equipo, la comunicación y la diversión con
-                este evento especial para empresas. Se incluye guía y
-                equipamiento.
-              </p>
-              <button class="btn btn-success mt-2" title="Suscribirse">Suscribirse</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EVENTO 4 -->
-      <div class="card mb-4 shadow-lg">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              th:src="@{/img/bosque1.jpg}"
-              class="img-fluid rounded-start h-100 object-fit-cover"
-              alt="Imagen del evento 4"
-              title="Dia Familiar de Black Ops"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title">Día Familiar de Black Ops</h4>
-              <span class="badge bg-info mb-2">Familiar / Infantil</span>
-              <p class="mb-1"><strong>Fecha:</strong> 7 de Agosto, 2025</p>
-              <p class="mb-1"><strong>Hora:</strong> 11:00 a 17:00</p>
-              <p class="mb-1">
-                <strong>Escenario:</strong>
-                <a class="ubicacion-escenarios" th:href="@{/escenarios}" title="escenarios">Selva Astur</a>
-              </p>
-              <p class="card-text mt-2">
-                Actividades para todas las edades, juegos de airsoft con
-                réplicas ligeras, zona picnic y castillos inflables. ¡Diversión
-                asegurada!
-              </p>
-              <button class="btn btn-success mt-2" title="Suscribirse">Suscribirse</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EVENTO 5 -->
-      <div class="card mb-4 shadow-lg">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              th:src="@{/img/lago1.jpg}"
-              class="img-fluid rounded-start h-100 object-fit-cover"
-              alt="Imagen del evento 5"
-              title="Liga Black Ops Regional - Jornada 1"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h4 class="card-title">Liga Black Ops Regional - Jornada 1</h4>
-              <span class="badge bg-dark mb-2">Liga</span>
-              <p class="mb-1"><strong>Fecha:</strong> 13 de septiembre, 2025</p>
-              <p class="mb-1"><strong>Hora:</strong> 10:00 a 16:00</p>
-              <p class="mb-1">
-                <strong>Escenario:</strong>
-                <a class="ubicacion-escenarios" th:href="@{/escenarios}" title="escenarios">Lagos de Covadonga</a>
-              </p>
-              <p class="card-text mt-2">
-                Comienza la liga regional. Formato por equipos, con sistema de
-                puntuación y árbitros oficiales. Muchos premios y mucha
-                competencia
-              </p>
-              <button class="btn btn-success mt-2" title="Suscribirse">Suscribirse</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
-    </footer>
-
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-  </body>
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+	</footer>
+	<script th:src="@{/js/timeout.js}"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>
-        

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gestión de Suscripciones | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/admin}">
+				<img th:src="@{/img/logo.png}" alt="Logo Black Ops"
+				title="Panel Admin" /> <span
+				class="ms-2">ADMINISTRACIÓN</span>
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link btn btn-outline-light"
+						th:href="@{/logout}">Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container admin-menu">
+		<h1 class="text-center mb-5">Gestión de Suscripciones</h1>
+		<div class="row g-4 text-center">
+			<div class="col-md-6">
+				<a th:href="@{/admin/listado_suscripciones}"
+					class="btn btn-dark w-100 p-4 shadow card-transparente"> LISTADO DE
+					SUSCRIPCIONES </a>
+			</div>
+			<div class="col-md-6">
+				<a th:href="@{/admin/eliminar_suscripcion}"
+					class="btn btn-dark w-100 p-4 shadow card-transparente"> ELIMINAR
+					SUSCRIPCION </a>
+			</div>
+			<div class="col-md-12">
+				<a th:href="@{/admin}"
+					class="btn btn-dark w-100 p-4 shadow card-transparente"> Volver al
+					Panel de Administración </a>
+			</div>
+		</div>
+	</main>
+
+	<footer class="mt-5 text-center">
+		<p>&copy; 2025 Black Ops Paintball Asturias | Panel de
+			Administración</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

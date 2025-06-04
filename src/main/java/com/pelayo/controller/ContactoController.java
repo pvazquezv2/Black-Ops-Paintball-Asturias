@@ -1,46 +1,55 @@
 package com.pelayo.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.pelayo.model.Contacto;
+
 import com.pelayo.service.ContactoService;
 
-@RestController
-@RequestMapping("/contactos")
+@Controller
 public class ContactoController {
 	@Autowired
-    private ContactoService contactoService;
+	private ContactoService contactoService;
 
-    @PostMapping("/enviar")
-    public void insertar(@RequestBody Contacto contacto) {
-        contactoService.insertar(contacto);
-    }
+	@PostMapping("/contacto/enviar")
+	public String insertarDesdeFormulario(Contacto contacto, Model model) {
+		contacto.setFechaContacto(LocalDateTime.now());
+		contactoService.insertar(contacto);
 
-    @GetMapping("/listar")
-    public List<Contacto> listar() {
-        return contactoService.verTodos();
-    }
+		model.addAttribute("mensaje", "Mensaje enviado correctamente!");
+		return "contacto";
+	}
 
-    @GetMapping("/buscarPorPersona/{personaId}")
-    public Optional<Contacto> buscarPorPersona(@PathVariable Long personaId) {
-        return contactoService.buscarPorId(personaId);
-    }
+	@GetMapping("/admin/listado_mensajes")
+	public String listarMensajes(Model model) {
+		List<Contacto> mensajes = contactoService.verTodos();
 
-    @DeleteMapping("/borrar/{id}")
-    public ResponseEntity<?> borrar(@PathVariable Long id) {
-		return null;
-        // lógica
-    }
+		model.addAttribute("contactos", mensajes);
+		return "admin/listado_mensajes";
+	}
+
+	@GetMapping("/admin/eliminar_mensaje")
+	public String listarMensajesparaEliminar(Model model) {
+		List<Contacto> mensajes = contactoService.verTodos();
+
+		model.addAttribute("contactos", mensajes);
+		return "admin/eliminar_mensaje";
+	}
+
+	@PostMapping("/admin/eliminar_mensaje/{id}")
+	public String eliminarMensaje(@PathVariable Long id) {
+		contactoService.eliminarPorId(id);
+		return "redirect:/admin/eliminar_mensaje";
+	}
+
 }

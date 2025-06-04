@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>Mis Reservas | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<style>
+table.table td {
+	max-width: 200px;
+	white-space: normal;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+</style>
+</head>
+<body>
+
+	<nav
+		class="navbar navbar-expand-lg navbar-dark fixed-top nav-transparente">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+				<img th:src="@{/img/logo.png}" alt="Black Ops Paintball Asturias"
+				title="Black Ops Paintball Asturias" />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+					<li class="nav-item"><a class="nav-link" th:href="@{/precios}"
+						title="precios">Precios</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/escenarios}" title="escenarios">Escenarios</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/eventos}"
+						title="eventos">Eventos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/modosDeJuego}" title="modos de juego">Modos de
+							Juego</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false" href="#"
+						title="¿por qué nosotros?"> ¿Por qué nosotros? </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/quienesSomos}"
+								title="quienes somos">Quienes Somos</a></li>
+							<li><a class="dropdown-item" th:href="@{/reglamento}"
+								title="reglamento">Reglamento</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas
+									Frecuentes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contacto}" title="contacto">Contacto</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a></li>
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<span sec:authentication="name">Usuario</span>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="userDropdown">
+							<li><a class="dropdown-item" th:href="@{/misReservas}"
+								title="Mis Reservas">Mis Reservas</a></li>
+							<li><a class="dropdown-item" th:href="@{/misEventos}"
+								title="Mis Eventos">Mis Eventos</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post" >
+									<button type="submit" class="dropdown-item">Cerrar
+										sesión</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/paintball2.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<h1>MIS RESERVAS</h1>
+			<p>Aquí puedes consultar todas tus reservas realizadas</p>
+		</div>
+	</header>
+
+
+	<section class="container my-5">
+		<h2 class="text-center mb-4">Listado de Reservas</h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Fecha realizada</th>
+						<th>Fecha reserva</th>
+						<th>Número personas</th>
+						<th>Pack</th>
+						<th>Modo juego</th>
+						<th>Escenario</th>
+						<th>Info adicional</th>
+						<th>Estado</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="reserva : ${reservas}">
+						<td
+							th:text="${#temporals.format(reserva.fechaRealizada, 'dd-MM-yyyy')}">2025-05-28</td>
+						<td
+							th:text="${#temporals.format(reserva.fechaReserva, 'dd-MM-yyyy')}">2025-05-30
+							14:00</td>
+						<td th:text="${reserva.numeroPersonas}">4</td>
+						<td th:text="${reserva.pack}">Pack básico</td>
+						<td th:text="${reserva.modoJuego}">Competitivo</td>
+						<td th:text="${reserva.escenario.nombre}">Escenario 1</td>
+						<td th:text="${reserva.infoAdicional}">Sin gluten</td>
+						<td th:text="${reserva.estado}">CONFIRMADO</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

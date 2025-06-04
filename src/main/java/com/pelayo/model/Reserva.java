@@ -17,43 +17,62 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="reservas")
+@Table(name = "reservas")
 public class Reserva implements Serializable {
 
 	private static final Long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private LocalDate fechaRealizada;
-	
+
 	@Column(nullable = false)
 	private LocalDateTime fechaReserva;
-	
+
+	@Column(nullable = false)
+	private int numeroPersonas;
+
+	@Column(nullable = false)
+	private String pack;
+
+	@Column(length = 500)
+	private String infoAdicional;
+
+	@Column(nullable = false)
+	private String modoJuego;
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private EstadoReserva estado;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_persona")
 	private Persona persona;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_escenario")
 	private Escenario escenario;
-	
+
 	public Reserva() {
-		
+
 	}
-	
-	public Reserva(LocalDate fechaRealizada, LocalDateTime fechaReserva, Persona persona, Escenario escenario, EstadoReserva estado) {
-	    this.fechaRealizada = fechaRealizada;
-	    this.fechaReserva = fechaReserva;
-	    this.persona = persona;
-	    this.escenario = escenario;
-	    this.estado = estado;
+
+	public Reserva(Long id, LocalDate fechaRealizada, LocalDateTime fechaReserva, int numeroPersonas, String pack,
+			String infoAdicional, String modoJuego, EstadoReserva estado, Persona persona, Escenario escenario) {
+		super();
+		this.id = id;
+		this.fechaRealizada = fechaRealizada;
+		this.fechaReserva = fechaReserva;
+		this.numeroPersonas = numeroPersonas;
+		this.pack = pack;
+		this.infoAdicional = infoAdicional;
+		this.modoJuego = modoJuego;
+		this.estado = estado;
+		this.persona = persona;
+		this.escenario = escenario;
 	}
 
 	public Long getId() {
@@ -78,6 +97,38 @@ public class Reserva implements Serializable {
 
 	public void setFechaReserva(LocalDateTime fechaReserva) {
 		this.fechaReserva = fechaReserva;
+	}
+
+	public int getNumeroPersonas() {
+		return numeroPersonas;
+	}
+
+	public void setNumeroPersonas(int numeroPersonas) {
+		this.numeroPersonas = numeroPersonas;
+	}
+
+	public String getPack() {
+		return pack;
+	}
+
+	public void setPack(String pack) {
+		this.pack = pack;
+	}
+
+	public String getInfoAdicional() {
+		return infoAdicional;
+	}
+
+	public void setInfoAdicional(String infoAdicional) {
+		this.infoAdicional = infoAdicional;
+	}
+
+	public String getModoJuego() {
+		return modoJuego;
+	}
+
+	public void setModoJuego(String modoJuego) {
+		this.modoJuego = modoJuego;
 	}
 
 	public EstadoReserva getEstado() {
@@ -106,7 +157,8 @@ public class Reserva implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(estado, fechaRealizada, fechaReserva, id, persona);
+		return Objects.hash(escenario, estado, fechaRealizada, fechaReserva, id, infoAdicional, modoJuego,
+				numeroPersonas, pack, persona);
 	}
 
 	@Override
@@ -118,23 +170,20 @@ public class Reserva implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Reserva other = (Reserva) obj;
-		return estado == other.estado && Objects.equals(fechaRealizada, other.fechaRealizada)
+		return Objects.equals(escenario, other.escenario) && estado == other.estado
+				&& Objects.equals(fechaRealizada, other.fechaRealizada)
 				&& Objects.equals(fechaReserva, other.fechaReserva) && Objects.equals(id, other.id)
+				&& Objects.equals(infoAdicional, other.infoAdicional) && Objects.equals(modoJuego, other.modoJuego)
+				&& numeroPersonas == other.numeroPersonas && Objects.equals(pack, other.pack)
 				&& Objects.equals(persona, other.persona);
 	}
 
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", fechaRealizada=" + fechaRealizada + ", fechaReserva=" + fechaReserva
-				+ ", estado=" + estado + ", persona=" + persona + ", escenario=" + escenario + "]";
+				+ ", numeroPersonas=" + numeroPersonas + ", pack=" + pack + ", infoAdicional=" + infoAdicional
+				+ ", modoJuego=" + modoJuego + ", estado=" + estado + ", persona=" + persona + ", escenario="
+				+ escenario + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

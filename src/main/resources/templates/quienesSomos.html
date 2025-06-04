@@ -1,164 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quienes somos</title>
-    <link rel="icon" type="image/png" href="img/logo.png" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="img/logo.png" alt="Black Ops Paintball Asturias" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
-            <li class="nav-item">
-              <a class="nav-link" href="precios.html">Precios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="escenarios.html">Escenarios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="eventos.html">Eventos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="modosDeJuego.html">Modos de Juego</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="equipamiento.html">Equipamiento</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                href="porqueNosotros.html"
-                >¿Por qué nosotros?</a
-              >
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="quienesSomos.html"
-                    >Quienes Somos</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="reglamento.html">Reglamento</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="preguntasFrecuentes.html"
-                    >Preguntas Frecuentes</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contacto.html">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-glow ms-3" href="#">INICIAR SESIÓN</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quienes somos | Black Ops Paintball Asturias</title>
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
 
-    <header class="hero">
-      <video autoplay muted loop playsinline>
-        <source src="videos/contacto.mp4" type="video/mp4" />
-      </video>
-      <div class="content">
-        <h1>¿QUIÉNES SOMOS?</h1>
-        <p>Por si te interesa nuestra historia</p>
-        <a class="btn btn-glow" href="#">RESERVA YA</a>
-      </div>
-    </header>
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-transparente">
+		<div class="container">
+			<a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+				<img th:src="@{/img/logo.png}" alt="Black Ops Paintball Asturias"
+				title="Black Ops Paintball Asturias" />
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav align-items-center ms-logo-space" id="enlaces">
+					<li class="nav-item"><a class="nav-link" th:href="@{/precios}"
+						title="precios">Precios</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/escenarios}" title="escenarios">Escenarios</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/eventos}"
+						title="eventos">Eventos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/modosDeJuego}" title="modos de juego">Modos de
+							Juego</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/equipamiento}" title="equipamiento">Equipamiento</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false" href="#"
+						title="¿por qué nosotros?"> ¿Por qué nosotros?
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/quienesSomos}"
+								title="quienes somos">Quienes Somos</a></li>
+							<li><a class="dropdown-item" th:href="@{/reglamento}"
+								title="reglamento">Reglamento</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/preguntasFrecuentes}" title="preguntas frecuentes">Preguntas
+									Frecuentes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/contacto}" title="contacto">Contacto</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="btn btn-glow ms-3" th:href="@{/login}">INICIAR SESIÓN</a></li>
+					<li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<span sec:authentication="name">Usuario</span>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="userDropdown">
+							<li><a class="dropdown-item" th:href="@{/misReservas}"
+								title="Mis Reservas">Mis Reservas</a></li>
+							<li><a class="dropdown-item" th:href="@{/misEventos}"
+								title="Mis Eventos">Mis Eventos</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<form th:action="@{/logout}" method="post" >
+									<button type="submit" class="dropdown-item">Cerrar
+										sesión</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <section class="container my-5">
-      <h2 class="text-center mb-5">Nuestra Historia</h2>
+	<header class="intro">
+		<video autoplay muted loop playsinline>
+			<source th:src="@{/videos/contacto.mp4}" type="video/mp4" />
+		</video>
+		<div class="content">
+			<h1>¿QUIÉNES SOMOS?</h1>
+			<p>Nuestra misión: que vivas la tuya</p>
+			<a class="btn btn-glow" th:href="@{/reservar}" title="reservar">RESERVA
+				YA</a>
+		</div>
+	</header>
 
-      <!-- Bloque 1 -->
-      <div class="row align-items-center mb-5">
-        <div class="col-md-6">
-          <h3>Los Primeros Disparos</h3>
-          <p>
-            Todo comenzó con un sueño y un pequeño terreno en las afueras de
-            Oviedo. Un grupo de apasionados por la adrenalina y la estrategia
-            decidió convertir una antigua finca en el primer campo de paintball
-            táctico de la región. Sin apenas medios pero con mucha ilusión,
-            Black Ops Paintball abrió sus puertas con un solo escenario: un
-            bosque denso y desafiante que se convirtió en leyenda local.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img
-            src="img/quienesSomos1.jpg"
-            class="img-fluid rounded shadow"
-            alt="Primer campo de paintball"
-          />
-        </div>
-      </div>
+	<section class="container my-5">
+		<h2 class="text-center mb-5">Nuestra Historia</h2>
+		<div class="row align-items-center mb-5">
+			<div class="col-md-6">
+				<h3>Los Primeros Disparos</h3>
+				<p>Todo comenzó con un sueño y un pequeño terreno asturiano. Un
+					grupo de apasionados por la adrenalina y la estrategia decidió
+					convertir una antigua finca en el primer campo de paintball táctico
+					de la región. Sin apenas medios pero con mucha ilusión, Black Ops
+					Paintball abrió sus puertas con un solo escenario: un bosque denso
+					y desafiante que se convirtió en leyenda local.</p>
+			</div>
+			<div class="col-md-6">
+				<img th:src="@{/img/quienesSomos1.jpg}"
+					class="img-fluid rounded shadow" alt="Primer campo de paintball" />
+			</div>
+		</div>
 
-      <!-- Bloque 2 -->
-      <div class="row align-items-center mb-5 flex-md-row-reverse">
-        <div class="col-md-6">
-          <h3>Crecimiento Explosivo</h3>
-          <p>
-            La acogida fue tan buena que, en pocos años, fuimos expandiéndonos
-            por toda Asturias. Incorporamos nuevos escenarios únicos: castillos,
-            pueblos abandonados, minas subterráneas y hasta una playa
-            fortificada. Cada espacio fue diseñado para ofrecer experiencias
-            diferentes y realistas, con juegos adaptados para todo tipo de
-            jugadores.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img
-            src="img/quienesSomos2.jpg"
-            class="img-fluid rounded shadow"
-            alt="Expansión de escenarios"
-          />
-        </div>
-      </div>
+		<div class="row align-items-center mb-5 flex-md-row-reverse">
+			<div class="col-md-6">
+				<h3>Crecimiento Explosivo</h3>
+				<p>La acogida fue tan buena que, en pocos años, fuimos
+					expandiéndonos por toda Asturias. Incorporamos nuevos escenarios
+					únicos: castillos, pueblos abandonados, minas subterráneas y hasta
+					una playa fortificada. Cada espacio fue diseñado para ofrecer
+					experiencias diferentes y realistas, con juegos adaptados para todo
+					tipo de jugadores.</p>
+			</div>
+			<div class="col-md-6">
+				<img th:src="@{/img/quienesSomos2.jpg}"
+					class="img-fluid rounded shadow" alt="Expansión de escenarios" />
+			</div>
+		</div>
 
-      <!-- Bloque 3 -->
-      <div class="row align-items-center mb-5">
-        <div class="col-md-6">
-          <h3>Una Comunidad en Crecimiento</h3>
-          <p>
-            Hoy, Black Ops Paintball no solo es un centro de aventura: es una
-            comunidad. Hemos organizado ligas, eventos benéficos, torneos
-            corporativos y días familiares. Apostamos por la seguridad, la
-            innovación y el compañerismo, con un equipo humano comprometido en
-            ofrecer la mejor experiencia en cada disparo.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img
-            src="img/equipamiento3.jpg"
-            class="img-fluid rounded shadow"
-            alt="Comunidad Black Ops"
-          />
-        </div>
-      </div>
-    </section>
+		<div class="row align-items-center mb-5">
+			<div class="col-md-6">
+				<h3>Una Comunidad en Crecimiento</h3>
+				<p>Hoy, Black Ops Paintball no solo es un centro de aventura: es
+					una comunidad. Hemos organizado ligas, eventos benéficos, torneos
+					corporativos y días familiares. Apostamos por la seguridad, la
+					innovación y el compañerismo, con un equipo humano comprometido en
+					ofrecer la mejor experiencia en cada disparo.</p>
+			</div>
+			<div class="col-md-6">
+				<img th:src="@{/img/equipamiento3.jpg}"
+					class="img-fluid rounded shadow" alt="Comunidad Black Ops" />
+			</div>
+		</div>
+	</section>
 
-    <footer>
-      <p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
-    </footer>
-    <script src="js/bootstrap.bundle.min.js"></script>
-  </body>
+	<footer>
+		<p>&copy; 2025 Black Ops Paintball Asturias | Zona Segura</p>
+	</footer>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>

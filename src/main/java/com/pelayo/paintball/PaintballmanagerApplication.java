@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.pelayo.repository")
 public class PaintballmanagerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PaintballmanagerApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(PaintballmanagerApplication.class, args);
+	}
 
 }
