@@ -132,16 +132,18 @@
 	<section class="container my-5">
 		<h2 class="text-center mb-4">Ofertas y Promociones</h2>
 		<div class="row g-4">
-			<th:block th:each="oferta : ${ofertas}">
-				<div class="col-md-6">
-					<div class="card bg-dark text-white shadow-sm">
-						<div class="card-body">
-							<h5 class="card-title" th:text="${oferta.titulo}">Título</h5>
-							<p class="card-text" th:utext="${oferta.descripcion}">Descripción</p>
-						</div>
-					</div>
+			<th:block th:if="${ofertas != null}">
+	<th:block th:each="oferta : ${ofertas}">
+		<div class="col-md-6">
+			<div class="card bg-dark text-white shadow-sm">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${oferta.titulo}">Título</h5>
+					<p class="card-text" th:utext="${oferta.descripcion}">Descripción</p>
 				</div>
-			</th:block>
+			</div>
+		</div>
+	</th:block>
+</th:block>
 		</div>
 	</section>
 
