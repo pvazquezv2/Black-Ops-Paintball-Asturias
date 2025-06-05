@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
-
+import java.util.function.Supplier;
 @Service
 public class PersonaDetailsService implements UserDetailsService {
 

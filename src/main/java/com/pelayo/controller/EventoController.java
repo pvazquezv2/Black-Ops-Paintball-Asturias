@@ -1,5 +1,6 @@
 package com.pelayo.controller;
 
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -106,24 +107,25 @@ public class EventoController {
 
 	@PostMapping("/admin/nuevo_evento")
 	public String guardarEvento(@ModelAttribute Evento evento, @RequestParam("imagen") MultipartFile imagen,
-			RedirectAttributes redirectAttributes) {
+	                            RedirectAttributes redirectAttributes) {
+	    try {
+	        if (!imagen.isEmpty()) {
+	            String nombreArchivo = Paths.get(imagen.getOriginalFilename()).getFileName().toString();
+	            // No se copia el archivo, solo se usa la ruta existente
+	            evento.setImagenUrl("/img/" + nombreArchivo);
+	        }
 
-		try {
-			if (!imagen.isEmpty()) {
-				String nombreArchivo = UUID.randomUUID() + "_" + imagen.getOriginalFilename();
-				Path rutaDestino = Paths.get("src/main/resources/static/img/" + nombreArchivo);
-				Files.copy(imagen.getInputStream(), rutaDestino, StandardCopyOption.REPLACE_EXISTING);
-				evento.setImagenUrl("/img/" + nombreArchivo);
-			}
+	        eventoService.guardar(evento);
+	        redirectAttributes.addFlashAttribute("mensaje", "Evento creado correctamente.");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        redirectAttributes.addFlashAttribute("error", "Error al crear el evento.");
+	    }
 
-			eventoService.guardar(evento);
-			redirectAttributes.addFlashAttribute("mensaje", "Evento creado correctamente.");
-		} catch (Exception e) {
-			e.printStackTrace();
-			redirectAttributes.addFlashAttribute("error", "Error al crear el evento.");
-		}
-
-		return "redirect:/admin/nuevo_evento";
+	    return "redirect:/admin/nuevo_evento";
 	}
+
+
+
 
 }
