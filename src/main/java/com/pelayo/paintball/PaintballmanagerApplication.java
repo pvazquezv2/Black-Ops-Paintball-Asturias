@@ -16,7 +16,6 @@ public class PaintballmanagerApplication {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(PaintballmanagerApplication.class);
 
-		// Leer el puerto desde la variable de entorno
 		Map<String, Object> props = new HashMap<>();
 		String port = System.getenv("PORT");
 		if (port != null) {
@@ -24,5 +23,6 @@ public class PaintballmanagerApplication {
 		}
 		app.setDefaultProperties(props);
 		app.run(args);
+		
 	}
 }
