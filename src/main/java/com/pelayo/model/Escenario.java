@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 public class Escenario implements Serializable {
 
 	private static final Long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
