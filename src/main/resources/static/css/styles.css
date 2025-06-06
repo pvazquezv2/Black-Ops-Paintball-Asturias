@@ -82,10 +82,17 @@ header.intro {
 }
 
 .intro h1 {
-	font-size: 4rem;
-	letter-spacing: 3px;
-	text-shadow: 0 0 10px #00ff5eaa;
+  font-size: 4rem;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00ff5eaa;
 }
+
+@media (max-width: 425px) {
+  .intro h1 {
+    font-size: 1.8rem;
+  }
+}
+
 
 img {
 	transition: transform 0.3s ease;
