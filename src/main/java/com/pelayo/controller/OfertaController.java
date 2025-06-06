@@ -34,6 +34,7 @@ public class OfertaController {
 
 		model.addAttribute("ofertas", ofertas);
 		return "admin/listado_ofertas";
+		
 	}
 
 	@GetMapping("/admin/eliminar_oferta")
