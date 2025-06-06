@@ -19,10 +19,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controlador para manejar operaciones relacionadas con usuarios (Personas),
+ * como login, registro, administración y eliminación.
+ */
 @Controller
 public class PersonaController {
-	
-
 
 	@Autowired
 	private PersonaService personaService;
@@ -30,6 +32,9 @@ public class PersonaController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	/**
+	 * Muestra el formulario de login. Si hay error, se muestra un mensaje.
+	 */
 	@GetMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error, Model model) {
 		if (error != null) {
@@ -38,6 +43,9 @@ public class PersonaController {
 		return "login";
 	}
 
+	/**
+	 * Redirige al usuario después del login según su rol (admin o usuario normal).
+	 */
 	@GetMapping("/redirect")
 	public String redirectByRole(Authentication authentication, Model model) {
 		if (authentication == null || authentication.getAuthorities() == null) {
@@ -57,12 +65,19 @@ public class PersonaController {
 		return "redirect:/login";
 	}
 
+	/**
+	 * Muestra el formulario para registrar una nueva persona.
+	 */
 	@GetMapping("/registro")
 	public String registroForm(Model model) {
 		model.addAttribute("persona", new Persona());
 		return "registro";
 	}
 
+	/**
+	 * Procesa el registro de una nueva persona, validando contraseñas y unicidad de
+	 * usuario/email.
+	 */
 	@PostMapping("/registro")
 	public String registrarPersona(@ModelAttribute("persona") Persona persona, @RequestParam String password,
 			@RequestParam String confirmPassword, Model model) {
@@ -90,12 +105,18 @@ public class PersonaController {
 		return "registro";
 	}
 
+	/**
+	 * Cierra la sesión del usuario.
+	 */
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 
+	/**
+	 * Muestra la lista de todas las personas para el panel de administración.
+	 */
 	@GetMapping("/admin/listado_personas")
 	public String listarPersonas(Model model) {
 		List<Persona> personas = personaService.verTodas();
@@ -104,12 +125,19 @@ public class PersonaController {
 		return "admin/listado_personas";
 	}
 
+	/**
+	 * Muestra el formulario para crear una nueva persona desde el panel admin.
+	 */
 	@GetMapping("/admin/nueva_persona")
 	public String nuevaPersona(Model model) {
 		model.addAttribute("persona", new Persona());
 		return "admin/nueva_persona";
 	}
 
+	/**
+	 * Procesa el guardado de una nueva persona creada desde el panel admin,
+	 * validando contraseñas, unicidad y rol.
+	 */
 	@PostMapping("/admin/nueva_persona")
 	public String guardarPersona(@ModelAttribute("persona") Persona persona, @RequestParam String password,
 			@RequestParam String confirmPassword, @RequestParam String rol, Model model) {
@@ -145,12 +173,18 @@ public class PersonaController {
 		return "admin/nueva_persona";
 	}
 
+	/**
+	 * Muestra la lista de personas para seleccionar y eliminar en el panel admin.
+	 */
 	@GetMapping("/admin/eliminar_persona")
 	public String verPersonasParaEliminar(Model model) {
 		model.addAttribute("personas", personaService.verTodas());
 		return "admin/eliminar_persona";
 	}
 
+	/**
+	 * Elimina una persona por id y recarga la vista de eliminación.
+	 */
 	@PostMapping("/admin/eliminar_persona/{id}")
 	public String eliminarPersona(@PathVariable Long id) {
 		personaService.eliminarPorId(id);

@@ -12,12 +12,19 @@ import java.security.Principal;
 
 import com.pelayo.service.PersonaService;
 
+/**
+ * Controlador principal para las páginas públicas y las rutas generales
+ * de usuario y administrador.
+ */
 @Controller
 public class PaintballController {
 
 	@Autowired
 	private PersonaService personaService;
 
+	/**
+	 * Página de inicio del sitio.
+	 */
 	@GetMapping("/")
 	public String mostrarIndex() {
 		return "index";
@@ -58,6 +65,11 @@ public class PaintballController {
 		return "contacto";
 	}
 
+	/**
+	 * Página para hacer reservas.
+	 * Si el usuario está logueado, se le pasa su información a la vista.
+	 * Si no, lo mandamos a iniciar sesión.
+	 */
 	@GetMapping("/reservar")
 	public String reservar(Model model, Principal principal) {
 		if (principal != null) {
@@ -75,11 +87,18 @@ public class PaintballController {
 		return "reservar";
 	}
 
+	/**
+	 * Página de redirección para usuario común.
+	 * En este caso lo devuelve al inicio.
+	 */
 	@GetMapping("/usuario")
 	public String paginaUsuario() {
 		return "/";
 	}
 
+	/**
+	 * Página principal del panel admin.
+	 */
 	@GetMapping("/admin")
 	public String paginaAdmin() {
 		return "admin/admin";

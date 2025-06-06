@@ -27,6 +27,10 @@ import com.pelayo.service.EscenarioService;
 import com.pelayo.service.PersonaService;
 import com.pelayo.service.ReservaService;
 
+/**
+ * Controlador para gestionar las reservas de escenarios, incluyendo creación,
+ * visualización y administración.
+ */
 @Controller
 public class ReservaController {
 
@@ -39,6 +43,21 @@ public class ReservaController {
 	@Autowired
 	private EscenarioService escenarioService;
 
+	/**
+	 * Procesa el envío de una nueva reserva. Valida conflictos de horario, asocia
+	 * la reserva a la persona autenticada y guarda la reserva.
+	 * 
+	 * @param fecha              fecha de la reserva
+	 * @param hora               hora de la reserva
+	 * @param personas           número de personas
+	 * @param nombreEscenario    nombre del escenario
+	 * @param modo               modo de juego
+	 * @param pack               paquete seleccionado
+	 * @param infoAdicional      información extra
+	 * @param authentication     info del usuario autenticado
+	 * @param redirectAttributes para mensajes flash
+	 * @return redirección a página de reservas con mensaje o error
+	 */
 	@PostMapping("/reservas/enviar")
 	public String enviarReserva(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha,
 			@RequestParam("hora") @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) java.time.LocalTime hora,
@@ -77,6 +96,13 @@ public class ReservaController {
 		return "redirect:/reservar";
 	}
 
+	/**
+	 * Muestra la lista de reservas hechas por el usuario autenticado.
+	 * 
+	 * @param model modelo para la vista
+	 * @param auth  autenticación del usuario
+	 * @return vista con las reservas del usuario o redirección a login
+	 */
 	@GetMapping("/misReservas")
 	public String verMisReservas(Model model, Authentication auth) {
 		Optional<Persona> personaOpt = personaService.buscarPorNombreUsuario(auth.getName());
@@ -91,11 +117,23 @@ public class ReservaController {
 		return "misReservas";
 	}
 
+	/**
+	 * Página inicial del listado de reservas para administración.
+	 * 
+	 * @return vista principal del listado reservas admin
+	 */
 	@GetMapping("/admin/listado_reservas")
 	public String menuListadoReservas() {
 		return ("admin/listado_reservas");
 	}
 
+	/**
+	 * Muestra todas las reservas sin filtro para el administrador.
+	 * 
+	 * @param model modelo para la vista
+	 * @param auth  info del usuario autenticado (no usado aquí)
+	 * @return vista con todas las reservas
+	 */
 	@GetMapping("/admin/listado_todas_reservas")
 	public String listado_toda_reservas(Model model, Authentication auth) {
 
@@ -105,6 +143,13 @@ public class ReservaController {
 		return "admin/listado_todas_reservas";
 	}
 
+	/**
+	 * Lista reservas filtradas por escenario seleccionado.
+	 * 
+	 * @param escenarioId id opcional del escenario para filtrar
+	 * @param model       modelo para la vista
+	 * @return vista con reservas del escenario seleccionado
+	 */
 	@GetMapping("/admin/listado_reservas_escenarios")
 	public String listarReservasPorEscenario(@RequestParam(required = false) Long escenarioId, Model model) {
 		List<Escenario> escenarios = escenarioService.verTodos();
@@ -117,6 +162,13 @@ public class ReservaController {
 		return "admin/listado_reservas_escenarios";
 	}
 
+	/**
+	 * Lista reservas filtradas por persona seleccionada.
+	 * 
+	 * @param personaId id opcional de la persona para filtrar
+	 * @param model     modelo para la vista
+	 * @return vista con reservas de la persona seleccionada
+	 */
 	@GetMapping("/admin/listado_reservas_personas")
 	public String listarReservasPorPersona(@RequestParam(required = false) Long personaId, Model model) {
 		List<Persona> personas = personaService.verTodas();
@@ -128,6 +180,14 @@ public class ReservaController {
 		return "admin/listado_reservas_personas";
 	}
 
+	/**
+	 * Lista reservas dentro de un rango de fechas indicado.
+	 * 
+	 * @param fechaInicio fecha inicio del rango (opcional)
+	 * @param fechaFin    fecha fin del rango (opcional)
+	 * @param model       modelo para la vista
+	 * @return vista con reservas dentro del rango de fechas
+	 */
 	@GetMapping("/admin/listado_reservas_fechas")
 	public String listarPorRangoFechas(
 			@RequestParam(value = "fechaInicio", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
@@ -146,18 +206,36 @@ public class ReservaController {
 		return "admin/listado_reservas_fechas";
 	}
 
+	/**
+	 * Muestra todas las reservas disponibles para eliminar.
+	 * 
+	 * @param model modelo para la vista
+	 * @return vista para eliminar reservas
+	 */
 	@GetMapping("/admin/eliminar_reserva")
 	public String verReservasParaEliminar(Model model) {
 		model.addAttribute("reservas", reservaService.verTodas());
 		return "admin/eliminar_reserva";
 	}
 
+	/**
+	 * Elimina la reserva especificada por id.
+	 * 
+	 * @param id id de la reserva a eliminar
+	 * @return redirección a la página de eliminar reservas
+	 */
 	@PostMapping("/admin/eliminar_reserva/{id}")
 	public String eliminarReserva(@PathVariable Long id) {
 		reservaService.eliminarPorId(id);
 		return "redirect:/admin/eliminar_reserva";
 	}
 
+	/**
+	 * Muestra todas las reservas con sus estados para modificación.
+	 * 
+	 * @param model modelo para la vista
+	 * @return vista para modificar reservas
+	 */
 	@GetMapping("/admin/modificar_reserva")
 	public String mostrarReservasModificar(Model model) {
 		model.addAttribute("reservas", reservaService.verTodas());
@@ -165,6 +243,13 @@ public class ReservaController {
 		return "admin/modificar_reserva";
 	}
 
+	/**
+	 * Cambia el estado de una reserva según la selección del admin.
+	 * 
+	 * @param idReserva   id de la reserva a modificar
+	 * @param nuevoEstado nuevo estado a asignar
+	 * @return redirección a la página de modificar reservas
+	 */
 	@PostMapping({ "/admin/modificar_reserva", "/admin/modificar_reserva/" })
 	public String modificarEstadoReserva(@RequestParam("idReserva") Long idReserva,
 			@RequestParam("nuevoEstado") EstadoReserva nuevoEstado) {

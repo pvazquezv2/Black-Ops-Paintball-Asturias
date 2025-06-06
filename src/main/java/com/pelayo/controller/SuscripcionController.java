@@ -18,6 +18,11 @@ import com.pelayo.service.EventoService;
 import com.pelayo.service.PersonaService;
 import com.pelayo.service.SuscripcionService;
 
+/**
+ * Controlador encargado de gestionar las suscripciones de usuarios a eventos,
+ * incluyendo suscripción individual y administración de todas las
+ * suscripciones.
+ */
 @Controller
 public class SuscripcionController {
 
@@ -30,6 +35,14 @@ public class SuscripcionController {
 	@Autowired
 	private EventoService eventoService;
 
+	/**
+	 * Permite a un usuario autenticado suscribirse a un evento. Valida si ya está
+	 * suscrito previamente o si el evento existe.
+	 * 
+	 * @param eventoId  ID del evento al que se desea suscribir
+	 * @param principal datos del usuario autenticado
+	 * @return redirección con mensaje o error
+	 */
 	@PostMapping("/suscribirse")
 	public String suscribirse(@RequestParam("eventoId") Long eventoId, Principal principal) {
 
@@ -64,6 +77,13 @@ public class SuscripcionController {
 		return "redirect:/eventos?mensaje=Te has suscrito a este evento";
 	}
 
+	/**
+	 * Muestra un listado completo de suscripciones para el panel de administración.
+	 * 
+	 * @param model modelo para pasar los datos a la vista
+	 * @param auth  autenticación del usuario administrador
+	 * @return vista con la lista de suscripciones
+	 */
 	@GetMapping("/admin/listado_suscripciones")
 	public String listadoSuscripciones(Model model, Authentication auth) {
 
@@ -73,12 +93,25 @@ public class SuscripcionController {
 		return "admin/listado_suscripciones";
 	}
 
+	/**
+	 * Muestra las suscripciones disponibles para ser eliminadas desde el panel
+	 * admin.
+	 * 
+	 * @param model modelo para la vista
+	 * @return vista con suscripciones y opción de eliminación
+	 */
 	@GetMapping("/admin/eliminar_suscripcion")
 	public String verSuscripcionesParaEliminar(Model model) {
 		model.addAttribute("suscripciones", suscripcionService.verTodas());
 		return "admin/eliminar_suscripcion";
 	}
 
+	/**
+	 * Elimina una suscripción específica por su ID desde el panel de administrador.
+	 * 
+	 * @param id ID de la suscripción a eliminar
+	 * @return redirección a la vista de eliminación tras la acción
+	 */
 	@PostMapping("/admin/eliminar_suscripcion/{id}")
 	public String eliminarSuscripcion(@PathVariable Long id) {
 		suscripcionService.eliminarPorId(id);

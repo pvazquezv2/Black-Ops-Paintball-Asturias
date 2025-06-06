@@ -31,6 +31,10 @@ import com.pelayo.service.EventoService;
 import com.pelayo.service.PersonaService;
 import com.pelayo.service.SuscripcionService;
 
+/**
+ * Controlador encargado de gestionar todo lo relacionado con los eventos:
+ * mostrarlos, crearlos, eliminarlos, etc.
+ */
 @Controller
 public class EventoController {
 	@Autowired
@@ -45,6 +49,10 @@ public class EventoController {
 	@Autowired
 	private EscenarioService escenarioService;
 
+	/**
+	 * Página pública para ver los eventos disponibles. Si hay mensajes de éxito o
+	 * error (por ejemplo al suscribirse), se muestran también.
+	 */
 	@GetMapping("/eventos")
 	public String listarEventos(@RequestParam(value = "mensaje", required = false) String mensaje,
 			@RequestParam(value = "error", required = false) String error, Model model) {
@@ -62,6 +70,9 @@ public class EventoController {
 		return "eventos";
 	}
 
+	/**
+	 * Página donde un usuario registrado puede ver a qué eventos está suscrito.
+	 */
 	@GetMapping("/misEventos")
 	public String verMisEventos(Model model, Authentication auth) {
 		Optional<Persona> personaOpt = personaService.buscarPorNombreUsuario(auth.getName());
@@ -77,6 +88,9 @@ public class EventoController {
 		return "misEventos";
 	}
 
+	/**
+	 * Vista de administrador para ver la lista completa de eventos creados.
+	 */
 	@GetMapping("/admin/listado_eventos")
 	public String listado_eventos(Model model, Authentication auth) {
 
@@ -86,18 +100,27 @@ public class EventoController {
 		return "admin/listado_eventos";
 	}
 
+	/**
+	 * Vista para que el admin seleccione qué evento quiere eliminar.
+	 */
 	@GetMapping("/admin/eliminar_evento")
 	public String verEventosParaEliminar(Model model) {
 		model.addAttribute("eventos", eventoService.verTodos());
 		return "admin/eliminar_evento";
 	}
 
+	/**
+	 * Acción que borra un evento según su ID (desde el panel admin).
+	 */
 	@PostMapping("/admin/eliminar_evento/{id}")
 	public String eliminarEvento(@PathVariable Long id) {
 		eventoService.eliminarPorId(id);
 		return "redirect:/admin/eliminar_evento";
 	}
 
+	/**
+	 * Muestra el formulario para crear un nuevo evento (solo para admin).
+	 */
 	@GetMapping("/admin/nuevo_evento")
 	public String mostrarFormularioNuevoEvento(Model model) {
 		model.addAttribute("evento", new Evento());
@@ -105,27 +128,27 @@ public class EventoController {
 		return "admin/nuevo_evento";
 	}
 
+	/**
+	 * Guarda un nuevo evento. Si se sube una imagen, se guarda su nombre de
+	 * archivo.
+	 */
 	@PostMapping("/admin/nuevo_evento")
 	public String guardarEvento(@ModelAttribute Evento evento, @RequestParam("imagen") MultipartFile imagen,
-	                            RedirectAttributes redirectAttributes) {
-	    try {
-	        if (!imagen.isEmpty()) {
-	            String nombreArchivo = Paths.get(imagen.getOriginalFilename()).getFileName().toString();
-	            // No se copia el archivo, solo se usa la ruta existente
-	            evento.setImagenUrl("/img/" + nombreArchivo);
-	        }
+			RedirectAttributes redirectAttributes) {
+		try {
+			if (!imagen.isEmpty()) {
+				String nombreArchivo = Paths.get(imagen.getOriginalFilename()).getFileName().toString();
+				evento.setImagenUrl("/img/" + nombreArchivo);
+			}
 
-	        eventoService.guardar(evento);
-	        redirectAttributes.addFlashAttribute("mensaje", "Evento creado correctamente.");
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        redirectAttributes.addFlashAttribute("error", "Error al crear el evento.");
-	    }
+			eventoService.guardar(evento);
+			redirectAttributes.addFlashAttribute("mensaje", "Evento creado correctamente.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			redirectAttributes.addFlashAttribute("error", "Error al crear el evento.");
+		}
 
-	    return "redirect:/admin/nuevo_evento";
+		return "redirect:/admin/nuevo_evento";
 	}
-
-
-
 
 }
