@@ -84,7 +84,12 @@
 			<source th:src="@{/videos/paintball2.mp4}" type="video/mp4" />
 		</video>
 		<div class="content">
-			<h1>BLACK OPS PAINTBALL</h1>
+			<!-- Título grande para pantallas medianas en adelante -->
+<h1 class="display-3 d-none d-md-block text-white text-center">BLACK OPS PAINTBALL</h1>
+
+<!-- Título más pequeño para pantallas pequeñas -->
+<h1 class="h3 d-block d-md-none text-white text-center">BLACK OPS PAINTBALL</h1>
+
 			<p>No es un juego. Es una misión</p>
 			<a class="btn btn-glow" th:href="@{/reservar}" title="reservar">RESERVA
 				YA</a>
