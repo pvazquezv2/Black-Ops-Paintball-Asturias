@@ -24,7 +24,7 @@ public class OfertaController {
 	public String mostrarOfertas(Model model) {
 		List<Oferta> ofertas = ofertaService.verTodas();
 		model.addAttribute("ofertas", ofertas);
-		return "/precios";
+		return "precios";
 	}
 
 	@GetMapping("/admin/listado_ofertas")
