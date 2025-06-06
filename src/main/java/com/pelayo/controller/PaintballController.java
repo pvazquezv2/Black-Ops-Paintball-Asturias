@@ -87,32 +87,32 @@ public class PaintballController {
 
 	@GetMapping("/admin/gestion_eventos")
 	public String gestionEventos() {
-		return "/admin/gestion_eventos";
+		return "admin/gestion_eventos";
 	}
 
 	@GetMapping("/admin/gestion_personas")
 	public String gestionPersonas() {
-		return "/admin/gestion_personas";
+		return "admin/gestion_personas";
 	}
 
 	@GetMapping("/admin/gestion_mensajes")
 	public String gestionMensajes() {
-		return "/admin/gestion_mensajes";
+		return "admin/gestion_mensajes";
 	}
 
 	@GetMapping("/admin/gestion_precios")
 	public String gestionPrecios() {
-		return "/admin/gestion_precios";
+		return "admin/gestion_precios";
 	}
 
 	@GetMapping("/admin/gestion_reservas")
 	public String gestionReservas() {
-		return "/admin/gestion_reservas";
+		return "admin/gestion_reservas";
 	}
 
 	@GetMapping("/admin/gestion_suscripciones")
 	public String gestionSuscipciones() {
-		return "/admin/gestion_suscripciones";
+		return "admin/gestion_suscripciones";
 	}
 
 }
