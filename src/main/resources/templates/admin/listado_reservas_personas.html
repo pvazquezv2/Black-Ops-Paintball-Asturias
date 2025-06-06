@@ -36,7 +36,7 @@
 					<select class="form-select" name="personaId" required>
 						<option value="">Selecciona una persona</option>
 						<option th:each="per : ${personas}" th:value="${per.id}"
-							th:text="${per.nombre}"
+							th:text="${per.nombreUsuario}"
 							th:selected="${per.id == personaSeleccionadaId}"></option>
 					</select>
 				</div>

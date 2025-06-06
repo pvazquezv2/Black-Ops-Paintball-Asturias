@@ -38,6 +38,7 @@
 							<th>Hora Inicio</th>
 							<th>Hora Fin</th>
 							<th>Escenario</th>
+							<th>Suscriptores</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -48,6 +49,7 @@
 							<td th:text="${evento.horaInicio}">10:00</td>
 							<td th:text="${evento.horaFin}">18:00</td>
 							<td th:text="${evento.escenario.nombre}">Escenario 2</td>
+							<td th:text="${#lists.size(evento.suscripciones)}">20</td>
 						</tr>
 					</tbody>
 				</table>
