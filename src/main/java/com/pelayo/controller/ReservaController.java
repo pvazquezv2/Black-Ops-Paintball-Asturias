@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,9 +122,22 @@ public class ReservaController {
 
 		List<Reserva> reservas = reservaService.buscarPorPersona(personaOpt.get());
 
+		// Convertimos fechaReserva a hora local de Madrid (sin tocar la entidad original)
+		reservas.forEach(reserva -> {
+			if (reserva.getFechaReserva() != null) {
+				// Convierte de UTC a Europe/Madrid
+				LocalDateTime localDateTime = reserva.getFechaReserva()
+					.atZone(ZoneOffset.UTC) // interpretamos que la fecha está en UTC
+					.withZoneSameInstant(ZoneId.of("Europe/Madrid")) // convertimos a hora local
+					.toLocalDateTime(); // volvemos a LocalDateTime
+				reserva.setFechaReserva(localDateTime); // sobrescribimos con la hora ajustada
+			}
+		});
+
 		model.addAttribute("reservas", reservas);
 		return "misReservas";
 	}
+
 
 	/**
 	 * Página inicial del listado de reservas para administración.
