@@ -3,6 +3,8 @@ package com.pelayo.controller;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -74,15 +76,20 @@ public class ReservaController {
 		Escenario escenario = escenarioService.findByNombre(nombreEscenario);
 		LocalDateTime fechaHoraReserva = LocalDateTime.of(fecha, hora);
 
-		if (reservaService.existeConflictoReservaConEventoOReserva(fechaHoraReserva, escenario)) {
-			redirectAttributes.addFlashAttribute("error",
-					"Ya existe una reserva o evento para ese escenario, fecha y hora.");
-			return "redirect:/reservar";
+		// Forzar zona horaria Madrid
+		ZoneId madridZone = ZoneId.of("Europe/Madrid");
+		ZonedDateTime zonaMadrid = fechaHoraReserva.atZone(madridZone);
+		LocalDateTime fechaConvertida = zonaMadrid.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime();
+
+		if (reservaService.existeConflictoReservaConEventoOReserva(fechaConvertida, escenario)) {
+		    redirectAttributes.addFlashAttribute("error",
+		        "Ya existe una reserva o evento para ese escenario, fecha y hora.");
+		    return "redirect:/reservar";
 		}
 
 		Reserva reserva = new Reserva();
 		reserva.setFechaRealizada(LocalDate.now());
-		reserva.setFechaReserva(fechaHoraReserva);
+		reserva.setFechaReserva(fechaConvertida);
 		reserva.setNumeroPersonas(personas);
 		reserva.setModoJuego(modo);
 		reserva.setInfoAdicional(infoAdicional);
@@ -94,6 +101,7 @@ public class ReservaController {
 		reservaService.insertar(reserva);
 		redirectAttributes.addFlashAttribute("mensaje", "Reserva realizada");
 		return "redirect:/reservar";
+
 	}
 
 	/**
