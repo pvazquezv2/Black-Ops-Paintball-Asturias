@@ -74,7 +74,7 @@ table.table td {
 								<hr class="dropdown-divider" />
 							</li>
 							<li>
-								<form th:action="@{/logout}" method="post">
+								<form th:action="@{/logout}" method="post" >
 									<button type="submit" class="dropdown-item">Cerrar
 										sesión</button>
 								</form>
@@ -117,10 +117,9 @@ table.table td {
 					<tr th:each="reserva : ${reservas}">
 						<td
 							th:text="${#temporals.format(reserva.fechaRealizada, 'dd-MM-yyyy')}">2025-05-28</td>
-						<td th:text="${#dates.format(reserva.fechaReservaDate, 'dd-MM-yyyy HH:mm')}"></td>
-
-
-
+						<td
+							th:text="${#temporals.format(reserva.fechaReserva, 'dd-MM-yyyy')}">2025-05-30
+							14:00</td>
 						<td th:text="${reserva.numeroPersonas}">4</td>
 						<td th:text="${reserva.pack}">Pack básico</td>
 						<td th:text="${reserva.modoJuego}">Competitivo</td>
