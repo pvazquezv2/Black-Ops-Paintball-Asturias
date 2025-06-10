@@ -96,24 +96,39 @@ public class PersonaService {
 	 * @return true si los datos son válidos, false en caso contrario
 	 */
 	public boolean validarPersona(Persona pers) {
-		if (pers == null) {
-			return false;
-		}
-		if (pers.getNombre() == null || pers.getNombre().isEmpty()) {
-			return false;
-		}
-		if (pers.getNombre().length() < 3 || pers.getNombre().length() > 20) {
-			return false;
-		}
-		if (pers.getEmail() == null || pers.getEmail().isEmpty()) {
-			return false;
-		}
-		if (pers.getEmail().length() < 5 || !pers.getEmail().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
-				|| pers.getEmail().length() > 40) {
-			return false;
-		}
-		return true;
+	    if (pers == null) {
+	        return false;
+	    }
+
+	    if (pers.getNombre().length() < 3 || pers.getNombre().length() > 20) {
+	        return false;
+	    }
+	    if (pers.getApellido1().length() < 3 || pers.getApellido1().length() > 20) {
+	        return false;
+	    }
+	    if (pers.getApellido2().length() < 3 || pers.getApellido2().length() > 20) {
+	        return false;
+	    }
+	    if (pers.getNombreUsuario().length() < 3 || pers.getNombreUsuario().length() > 20) {
+	        return false;
+	    }
+
+	    
+	    String password = pers.getPassword();
+	    if (password == null || password.length() < 8) {
+	        return false;
+	    }
+
+	    boolean contieneLetra = password.matches(".*[a-zA-Z].*");
+	    boolean contieneNumero = password.matches(".*[0-9].*");
+
+	    if (!contieneLetra || !contieneNumero) {
+	        return false;
+	    }
+
+	    return true;
 	}
+
 
 	/**
 	 * Busca una persona por su ID (tipo primitivo).

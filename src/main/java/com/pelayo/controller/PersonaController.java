@@ -85,6 +85,10 @@ public class PersonaController {
 			model.addAttribute("errorRegistro", "Las contraseñas no coinciden.");
 			return "registro";
 		}
+	    if (!personaService.validarPersona(persona)) {
+	        model.addAttribute("errorRegistro", "Datos inválidos. Verifica los campos y la contraseña.");
+	        return "registro";
+	    }
 
 		if (personaService.buscarPorNombreUsuario(persona.getNombreUsuario()).isPresent()) {
 			model.addAttribute("errorRegistro", "El nombre de usuario ya existe.");
