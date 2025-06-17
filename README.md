@@ -1,4 +1,4 @@
-# 🔫Black-Ops-Paintball-Asturias🔫
+# 🔫Black Ops Paintball Asturias🔫
 
 
 Proyecto para el módulo de desarrollo de aplicaciones web del segundo curso del ciclo superior de desarrollo de aplicaciones web.
