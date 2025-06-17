@@ -1,9 +1,11 @@
 # Black-Ops-Paintball-Asturias
 
 
-Project for the web application development project module of the second year of the higher education cycle of web application development
+Proyecto para el módulo de desarrollo de aplicaciones web del segundo curso del ciclo superior de desarrollo de aplicaciones web.
 
-Website about a Paintball in Asturias
+Sitio web sobre paintball en Asturias.
+
+<h2>Link</h2>
 
 Link: https://paintballproyectodaw-production.up.railway.app/
 
