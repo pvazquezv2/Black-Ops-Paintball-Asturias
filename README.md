@@ -9,7 +9,7 @@ Sitio web sobre paintball en Asturias.
 https://paintballproyectodaw-production.up.railway.app/
 
 <h2>Tecnologías</h2>
-HTML, CSS, JAVA, JAVASCRIPT, BOOTSTRAP, pexels-videos/images, FOTOR AI
+<p>HTML, CSS, JAVA, JAVASCRIPT, BOOTSTRAP, pexels-videos/images, FOTOR AI</p>
 
 
 
