@@ -11,6 +11,7 @@ https://paintballproyectodaw-production.up.railway.app/
 <h2>Tecnologías</h2>
 HTML, CSS, JAVA, JAVASCRIPT, BOOTSTRAP, pexels-videos/images, FOTOR AI
 
+
 ![mockkkk](https://github.com/user-attachments/assets/35c8037e-d2e0-4116-af79-9dc50ef090b2)
 
 
