@@ -6,8 +6,7 @@ Proyecto para el módulo de desarrollo de aplicaciones web del segundo curso del
 Sitio web sobre paintball en Asturias.
 
 <h2>Link</h2>
-
-Link: https://paintballproyectodaw-production.up.railway.app/
+https://paintballproyectodaw-production.up.railway.app/
 
 Technologies: HTML, CSS, JAVA, JAVASCRIPT, BOOTSTRAP, pexels-videos/images, FOTOR AI
 
